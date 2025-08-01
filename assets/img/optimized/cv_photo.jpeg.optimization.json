@@ -1,0 +1,12 @@
+{
+  "filename": "cv_photo.jpeg",
+  "originalSize": 101261,
+  "recommendations": [
+    "Resize to maximum 400x400px for profile photos",
+    "Add proper alt text for accessibility"
+  ],
+  "webpSupport": {
+    "html": "<picture>\n  <source srcset=\"assets/img/optimized/cv_photo.webp\" type=\"image/webp\">\n  <img src=\"assets/img/cv_photo.jpeg\" alt=\"Description\" loading=\"lazy\" class=\"lazy-load\">\n</picture>",
+    "css": ".lazy-load {\n  opacity: 0;\n  transition: opacity 0.3s ease;\n}\n.lazy-load.loaded {\n  opacity: 1;\n}"
+  }
+}

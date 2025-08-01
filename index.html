@@ -13,24 +13,22 @@
       rel="stylesheet"
     />
 
-    <!-- Estilos globales -->
-    <link rel="stylesheet" href="styles/main.css" />
-
-    <!-- Estilos por sección -->
-    <link rel="stylesheet" href="styles/navbar.css" />
-    <link rel="stylesheet" href="styles/navbar-modern.css" />
-    <link rel="stylesheet" href="styles/hero.css" />
-    <link rel="stylesheet" href="styles/sobre-mi.css" />
-    <link rel="stylesheet" href="styles/academica.css" />
-    <link rel="stylesheet" href="styles/proyectos-u.css" />
-    <link rel="stylesheet" href="styles/proyectos-trabajo.css" />
-    <link rel="stylesheet" href="styles/proyectos-personales.css" />
-    <link rel="stylesheet" href="styles/experiencias.css" />
-    <link rel="stylesheet" href="styles/contacto.css" />
-    <link rel="stylesheet" href="styles/footer.css" />
-    <link rel="stylesheet" href="styles/effects.css" />
-    <link rel="stylesheet" href="styles/background-animations.css" />
-    <link rel="stylesheet" href="styles/notifications.css" />
+    <!-- Critical CSS - Optimized and Inlined -->
+    <link rel="stylesheet" href="styles/optimized.css" />
+    
+    <!-- Non-critical CSS - Deferred loading -->
+    <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+    
+    <!-- Section-specific CSS - Loaded on demand -->
+    <link rel="preload" href="styles/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/hero.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/contacto.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Effects and animations - Lowest priority -->
+    <link rel="preload" href="styles/effects.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
+    <link rel="preload" href="styles/background-animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
+    <link rel="preload" href="styles/notifications.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
   </head>
 
   <body>
@@ -91,25 +89,20 @@
     <!-- Footer -->
     <div data-include="sections/footer.html"></div>
 
-    <!-- Scripts existentes del portafolio -->
+    <!-- Critical Scripts - Load immediately -->
+    <script src="js/performance-optimizer.js"></script>
+    <script src="js/contact-protection.js"></script>
     <script src="js/include.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/navbar-persistence.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/hero-animations.js"></script>
-    <script src="js/background-animations.js"></script>
 
-    <!-- Script del mensaje de bienvenida -->
-    <!-- Este script maneja toda la funcionalidad del alert -->
-    <script src="js/welcome-alert.js"></script>
-
-    <!-- Script de utilidades del portafolio con funciones polimórficas -->
-    <script src="js/portfolio-utils.js"></script>
-
-    <!-- Script de la sección académica -->
-    <script src="js/academica.js"></script>
-
-    <!-- Script para expandir/comprimir texto en Sobre Mí -->
-    <script src="js/sobre-mi-expand.js"></script>
+    <!-- Non-critical Scripts - Deferred loading -->
+    <script src="js/navbar.js" defer></script>
+    <script src="js/navbar-persistence.js" defer></script>
+    <script src="js/gallery.js" defer></script>
+    <script src="js/hero-animations.js" defer></script>
+    <script src="js/background-animations.js" defer></script>
+    <script src="js/welcome-alert.js" defer></script>
+    <script src="js/portfolio-utils.js" defer></script>
+    <script src="js/academica.js" defer></script>
+    <script src="js/sobre-mi-expand.js" defer></script>
   </body>
 </html>
