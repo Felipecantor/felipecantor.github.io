@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio Profesional</title>
+
+    <!-- Fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Estilos por sección -->
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/navbar-modern.css" />
+    <link rel="stylesheet" href="styles/hero.css" />
+    <link rel="stylesheet" href="styles/sobre-mi.css" />
+    <link rel="stylesheet" href="styles/academica.css" />
+    <link rel="stylesheet" href="styles/proyectos-u.css" />
+    <link rel="stylesheet" href="styles/proyectos-trabajo.css" />
+    <link rel="stylesheet" href="styles/proyectos-personales.css" />
+    <link rel="stylesheet" href="styles/experiencias.css" />
+    <link rel="stylesheet" href="styles/contacto.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/effects.css" />
+    <link rel="stylesheet" href="styles/background-animations.css" />
+    <link rel="stylesheet" href="styles/notifications.css" />
+  </head>
+
+  <body>
+    <!-- Mensaje de Bienvenida / Construcción -->
+    <!-- Este elemento aparece al cargar la página y se auto-oculta -->
+    <div id="welcomeAlert" class="welcome-alert">
+      <!-- Icono de construcción con animación de pulso -->
+      <div class="alert-icon">🚧</div>
+
+      <!-- Contenido principal del mensaje -->
+      <div class="alert-content">
+        <!-- Título principal del alert -->
+        <div class="alert-title">
+          ¡Bienvenido a mi portafolio!
+          <span style="font-size: 12px; opacity: 0.8">✨</span>
+        </div>
+        <!-- Mensaje descriptivo -->
+        <div class="alert-message">
+          Este sitio está en constante actualización y mejora. Algunas
+          funcionalidades pueden estar en desarrollo.
+        </div>
+      </div>
+
+      <!-- Botón para cerrar manualmente (X) -->
+      <button class="close-btn" onclick="closeWelcomeAlert()">×</button>
+
+      <!-- Barra de progreso que muestra tiempo restante (20s) -->
+      <div class="progress-bar"></div>
+    </div>
+
+    <!-- Navegación -->
+    <div data-include="sections/navbar.html"></div>
+
+    <!-- Sección Hero -->
+    <div data-include="sections/hero.html"></div>
+
+    <!-- Sobre Mí -->
+    <div data-include="sections/sobre-mi.html"></div>
+
+    <!-- Formación Académica -->
+    <div data-include="sections/academica.html"></div>
+
+    <!-- Proyectos Universitarios -->
+    <div data-include="sections/proyectos-u.html"></div>
+
+    <!-- Proyectos de Trabajo -->
+    <div data-include="sections/proyectos-trabajo.html"></div>
+
+    <!-- Proyectos Personales -->
+    <div data-include="sections/proyectos-personales.html"></div>
+
+    <!-- Experiencias -->
+    <div data-include="sections/experiencias.html"></div>
+
+    <!-- Contacto -->
+    <div data-include="sections/contacto.html"></div>
+
+    <!-- Footer -->
+    <div data-include="sections/footer.html"></div>
+
+    <!-- Scripts existentes del portafolio -->
+    <script src="js/include.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/navbar-persistence.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/hero-animations.js"></script>
+    <script src="js/background-animations.js"></script>
+
+    <!-- Script del mensaje de bienvenida -->
+    <!-- Este script maneja toda la funcionalidad del alert -->
+    <script src="js/welcome-alert.js"></script>
+
+    <!-- Script de utilidades del portafolio con funciones polimórficas -->
+    <script src="js/portfolio-utils.js"></script>
+
+    <!-- Script de la sección académica -->
+    <script src="js/academica.js"></script>
+
+    <!-- Script para expandir/comprimir texto en Sobre Mí -->
+    <script src="js/sobre-mi-expand.js"></script>
+  </body>
+</html>

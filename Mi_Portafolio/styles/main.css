@@ -1,0 +1,660 @@
+/* ===== VARIABLES CSS ===== */
+:root {
+    /* Colores - Tema Oscuro con Acentos Azules */
+    --primary-color: #3B82F6;
+    --primary-dark: #2563EB;
+    --primary-light: #60A5FA;
+    --text-dark: #F1F5F9;
+    --text-light: #CBD5E1;
+    --text-muted: #94A3B8;
+    --bg-white: #0F172A;
+    --bg-light: #1E293B;
+    --bg-gray: #334155;
+    --border-color: #475569;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    
+    /* Tipografía */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    --spacing-2xl: 4rem;
+    /* Bordes */
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    
+    /* Transiciones */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* ===== RESET Y ESTILOS BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ===== LAYOUT Y CONTENEDORES ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    gap: var(--spacing-xs);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--bg-gray);
+    border-color: var(--text-light);
+}
+
+/* ===== TARJETAS ===== */
+.card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* ===== GRID Y FLEXBOX ===== */
+.grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+/* ===== UTILIDADES ===== */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-xs); }
+.p-2 { padding: var(--spacing-sm); }
+.p-3 { padding: var(--spacing-md); }
+.p-4 { padding: var(--spacing-lg); }
+.p-5 { padding: var(--spacing-xl); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .flex {
+        flex-direction: column;
+    }
+    
+    .flex-between {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-xs);
+    }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+} 
+/* ===== WELCOME ALERT STYLES ===== */
+/* Estilos para el mensaje de bienvenida que aparece al cargar la página */
+
+/* Contenedor principal del alert - Fixed positioning para que quede flotando */
+.welcome-alert {
+    position: fixed; /* Fijo en la pantalla independiente del scroll */
+    top: 20px; /* Separación desde el borde superior */
+    left: 50%; /* Posicionamiento horizontal al centro */
+    transform: translateX(-50%); /* Centrado perfecto usando transform */
+    background: linear-gradient(135deg, #ffffff, #f8fafc); /* Gradiente blanco suave */
+    color: var(--bg-white); /* Usando variable del tema oscuro para texto oscuro */
+    padding: 16px 24px; /* Padding interno cómodo */
+    border-radius: var(--border-radius-xl); /* Radio de borde usando variable CSS */
+    box-shadow: var(--shadow-lg), 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra pronunciada para destacar */
+    z-index: 10000; /* Z-index muy alto para estar sobre todo */
+    max-width: 50%; /* Ancho máximo del 50% de la pantalla para dispositivos grandes */
+    width: 90%; /* Ancho responsivo */
+    display: flex; /* Flexbox para alinear elementos internos */
+    align-items: center; /* Centrado vertical de elementos */
+    gap: var(--spacing-sm); /* Espacio entre elementos */
+    font-family: var(--font-family); /* Fuente consistente con el sitio */
+    font-size: var(--font-size-sm); /* Tamaño de fuente del sistema */
+    line-height: 1.5; /* Interlineado cómodo para lectura */
+    animation: slideDown 0.5s ease-out; /* Animación de entrada suave */
+    backdrop-filter: blur(10px); /* Efecto de blur de fondo (moderno) */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil para definición */
+}
+
+/* Estado de salida del alert con animación fade */
+.welcome-alert.fade-out {
+    animation: fadeUp 0.5s ease-in forwards; /* Animación de salida hacia arriba */
+}
+
+/* Contenedor del icono con fondo azul y forma circular */
+.alert-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); /* Gradiente azul del tema */
+    color: white; /* Texto/emoji blanco para contraste */
+    border-radius: 50%; /* Forma circular perfecta */
+    width: 40px; /* Ancho fijo */
+    height: 40px; /* Alto fijo para mantener círculo perfecto */
+    display: flex; /* Flexbox para centrar contenido */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    flex-shrink: 0; /* No se reduce en espacios pequeños */
+    font-size: 18px; /* Tamaño del emoji/icono */
+    animation: pulse 2s ease-in-out infinite; /* Animación de pulso continua */
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3); /* Sombra azul suave */
+}
+
+/* Contenedor del texto principal */
+.alert-content {
+    flex: 1; /* Toma todo el espacio disponible */
+}
+
+/* Título del alert */
+.alert-title {
+    font-weight: 600; /* Peso de fuente semi-bold */
+    font-size: var(--font-size-base); /* Tamaño base del sistema */
+    margin-bottom: 4px; /* Separación pequeña del texto inferior */
+    display: flex; /* Flexbox para elementos inline */
+    align-items: center; /* Centrado vertical */
+    gap: var(--spacing-xs); /* Espacio entre elementos */
+    color: var(--bg-white); /* Color oscuro para contraste con fondo blanco */
+}
+
+/* Mensaje secundario del alert */
+.alert-message {
+    font-weight: 400; /* Peso normal */
+    opacity: 0.8; /* Ligeramente transparente para jerarquía visual */
+    font-size: var(--font-size-xs); /* Tamaño más pequeño */
+    color: var(--bg-light); /* Color gris medio */
+    line-height: 1.4; /* Interlineado ajustado para texto pequeño */
+}
+
+/* Botón de cerrar (X) */
+.close-btn {
+    background: rgba(0, 0, 0, 0.1); /* Fondo gris muy suave */
+    border: none; /* Sin borde */
+    color: var(--text-muted); /* Color gris usando variable */
+    width: 28px; /* Ancho fijo pequeño */
+    height: 28px; /* Alto igual al ancho para forma circular */
+    border-radius: 50%; /* Forma circular */
+    display: flex; /* Flexbox para centrar */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    cursor: pointer; /* Cursor de mano al hacer hover */
+    transition: all var(--transition-fast); /* Transición suave usando variable */
+    flex-shrink: 0; /* No se reduce */
+    font-size: 16px; /* Tamaño del símbolo X */
+    font-weight: bold; /* X en negrita */
+}
+
+/* Estado hover del botón cerrar */
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.15); /* Fondo más oscuro en hover */
+    color: var(--bg-white); /* Color más oscuro */
+    transform: scale(1.1); /* Efecto de aumento sutil */
+}
+
+/* Barra de progreso que muestra tiempo restante */
+.progress-bar {
+    position: absolute; /* Posicionamiento absoluto dentro del alert */
+    bottom: 0; /* Pegada al borde inferior */
+    left: 0; /* Pegada al borde izquierdo */
+    height: 3px; /* Altura delgada */
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark)); /* Gradiente azul */
+    border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl); /* Bordes redondeados solo abajo */
+    animation: progressBar 5.5s linear forwards; /* Animación de 5.5 segundos linear */
+}
+
+/* Animación de entrada - deslizamiento desde arriba */
+@keyframes slideDown {
+    from {
+        opacity: 0; /* Empieza invisible */
+        transform: translateX(-50%) translateY(-30px); /* Posición inicial más arriba */
+    }
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateX(-50%) translateY(0); /* Posición final normal */
+    }
+}
+
+/* Animación de salida - deslizamiento hacia arriba */
+@keyframes fadeUp {
+    to {
+        opacity: 0; /* Termina invisible */
+        transform: translateX(-50%) translateY(-30px); /* Se mueve hacia arriba */
+    }
+}
+
+/* Animación de pulso para el icono */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); /* Tamaño normal */
+        opacity: 1; /* Opacidad normal */
+    }
+    50% { 
+        transform: scale(1.1); /* Ligeramente más grande */
+        opacity: 0.8; /* Ligeramente transparente */
+    }
+}
+
+/* Animación de la barra de progreso - se reduce de 100% a 0% */
+@keyframes progressBar {
+    from { width: 100%; } /* Empieza con ancho completo */
+    to { width: 0%; } /* Termina sin ancho */
+}
+
+/* Ajuste del body cuando el alert está activo */
+body.alert-active {
+    padding-top: 800px; /* Padding superior para evitar que el alert tape contenido */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Dispositivos grandes (desktop y laptops) */
+@media (min-width: 1200px) {
+    .welcome-alert {
+        max-width: 40%; /* Más ancho en pantallas grandes */
+        padding: 20px 30px; /* Padding más generoso */
+        font-size: var(--font-size-base); /* Fuente más grande */
+    }
+    
+    .alert-title {
+        font-size: var(--font-size-lg); /* Título más grande */
+    }
+    
+    .alert-message {
+        font-size: var(--font-size-sm); /* Mensaje más grande */
+    }
+    
+    .alert-icon {
+        width: 50px; /* Icono más grande */
+        height: 50px;
+        font-size: 22px; /* Emoji más grande */
+    }
+    
+    .close-btn {
+        width: 32px; /* Botón cerrar más grande */
+        height: 32px;
+        font-size: 18px; /* X más grande */
+    }
+}
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 768px) {
+    .welcome-alert {
+        top: 10px; /* Menor separación superior en móviles */
+        padding: 14px 18px; /* Padding reducido */
+        max-width: 95%; /* Más ancho en móviles */
+        font-size: var(--font-size-xs); /* Fuente más pequeña */
+    }
+    
+    .alert-title {
+        font-size: var(--font-size-sm); /* Título más pequeño */
+    }
+    
+    .alert-message {
+        font-size: 12px; /* Mensaje aún más pequeño */
+    }
+    
+    .alert-icon {
+        width: 35px; /* Icono más pequeño */
+        height: 35px;
+        font-size: 16px; /* Emoji más pequeño */
+    }
+    
+    .close-btn {
+        width: 24px; /* Botón cerrar más pequeño */
+        height: 24px;
+        font-size: 14px; /* X más pequeña */
+    }
+    
+    /* Ajuste del padding del body en móviles */
+    body.alert-active {
+        padding-top: 70px; /* Menor padding en móviles */
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .welcome-alert {
+        top: 8px; /* Aún menor separación */
+        padding: 12px 16px; /* Padding mínimo */
+        max-width: 98%; /* Casi todo el ancho disponible */
+    }
+    
+    .alert-content {
+        min-width: 0; /* Permite que el texto se ajuste completamente */
+    }
+    
+    .alert-title {
+        font-size: 13px; /* Título muy pequeño */
+    }
+    
+    .alert-message {
+        font-size: 11px; /* Mensaje muy pequeño */
+        line-height: 1.3; /* Interlineado más compacto */
+    }
+    
+    .alert-icon {
+        width: 30px; /* Icono mínimo */
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    body.alert-active {
+        padding-top: 60px; /* Padding mínimo */
+    }
+}
+
+/* ===== MODO OSCURO OVERRIDE ===== */
+/* Si necesitas forzar colores en modo oscuro específico */
+@media (prefers-color-scheme: dark) {
+    .welcome-alert {
+        /* Mantiene el fondo blanco incluso en modo oscuro del sistema */
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        color: #1e293b;
+    }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+/* Respeta las preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .welcome-alert {
+        animation: none; /* Sin animación de entrada */
+    }
+    
+    .welcome-alert.fade-out {
+        animation: none; /* Sin animación de salida */
+        opacity: 0; /* Solo cambia opacidad */
+    }
+    
+    .alert-icon {
+        animation: none; /* Sin pulso */
+    }
+    
+    .progress-bar {
+        animation: progressBarReduced 5.5s linear forwards; /* Animación simplificada */
+    }
+}
+
+/* Animación simplificada para usuarios con preferencia de movimiento reducido */
+@keyframes progressBarReduced {
+    from { width: 100%; }
+    to { width: 0%; }
+}

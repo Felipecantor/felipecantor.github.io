@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Anderson Felipe Cantor Roa - Junior Data Analyst CV. Experiencia en análisis de datos, Python, SQL, Power BI y machine learning."
+    />
+    <meta
+      name="keywords"
+      content="Data Analyst, Junior Data Analyst, Python, SQL, Power BI, Machine Learning, Data Science, Analytics, Colombia"
+    />
+    <title>Anderson Felipe Cantor Roa - Junior Data Analyst CV</title>
+
+    <!-- Schema.org structured data for better SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Anderson Felipe Cantor Roa",
+        "jobTitle": "Junior Data Analyst",
+        "description": "Data Analyst with experience in Python, SQL, Power BI and machine learning",
+        "url": "https://linkedin.com/in/AndersonCantorRoa",
+        "sameAs": ["https://linkedin.com/in/AndersonCantorRoa"],
+        "knowsAbout": [
+          "Data Analysis",
+          "Python",
+          "SQL",
+          "Power BI",
+          "Machine Learning",
+          "Data Science"
+        ]
+      }
+    </script>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Font Awesome para iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      /* Fuente Inter para un aspecto moderno y limpio */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6; /* Un gris claro para el fondo */
+      }
+      /* Estilos personalizados para la foto de perfil */
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%; /* Foto circular */
+        border: 4px solid #6366f1; /* Borde morado */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      }
+      /* Estilos para los títulos de sección con una sola línea inferior */
+      .section-header {
+        margin-bottom: 1.5rem;
+        text-align: left;
+        border-bottom: 1px solid #4338ca; /* Línea delgada inferior */
+        padding-bottom: 0.5rem;
+      }
+      .section-header h2 {
+        font-size: 1.75rem; /* text-2xl */
+        font-weight: 600; /* font-semibold */
+        color: #4338ca; /* indigo-700 */
+        margin-bottom: 0; /* Elimina el margen inferior del h2 */
+      }
+      /* Estilo para las etiquetas de habilidades/intereses/certificaciones */
+      .skill-tag {
+        background-color: #e0e7ff; /* indigo-100 */
+        color: #3730a3; /* indigo-800 */
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500; /* font-medium */
+        padding: 0.25rem 0.75rem; /* px-3 py-1 */
+        border-radius: 9999px; /* rounded-full */
+        display: inline-block;
+      }
+
+      /* Estilos específicos para impresión/PDF */
+      @media print {
+        /* Asegurar que el texto sea seleccionable */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        /* Mantener colores y estilos en impresión */
+        body {
+          background-color: white !important;
+          color: black !important;
+        }
+
+        /* Asegurar que los enlaces sean visibles y funcionales */
+        a {
+          color: #4338ca !important;
+          text-decoration: underline !important;
+        }
+
+        /* Mejorar legibilidad del texto */
+        .text-gray-700 {
+          color: #374151 !important;
+        }
+
+        .text-gray-600 {
+          color: #4b5563 !important;
+        }
+
+        .text-gray-500 {
+          color: #6b7280 !important;
+        }
+
+        /* Mantener colores de las etiquetas */
+        .skill-tag {
+          background-color: #e0e7ff !important;
+          color: #3730a3 !important;
+          border: 1px solid #a5b4fc !important;
+        }
+
+        /* Asegurar que las imágenes se impriman */
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+
+        /* Evitar saltos de página en elementos importantes */
+        .section-header {
+          page-break-inside: avoid;
+        }
+
+        /* Permitir saltos de página solo donde sea necesario */
+        section {
+          page-break-inside: avoid;
+        }
+
+        /* Asegurar que el contenido principal se imprima correctamente */
+        .container {
+          max-width: none !important;
+          margin: 0 !important;
+          padding: 20px !important;
+        }
+      }
+
+      /* Estilos para mejorar la interactividad de enlaces */
+      a {
+        transition: color 0.2s ease;
+      }
+
+      a:hover {
+        color: #1e40af !important;
+      }
+
+      /* Asegurar que los enlaces sean accesibles */
+      a:focus {
+        outline: 2px solid #4338ca;
+        outline-offset: 2px;
+      }
+    </style>
+    <script>
+      // Función para mejorar la funcionalidad de enlaces en PDF
+      document.addEventListener("DOMContentLoaded", function () {
+        // Agregar atributos específicos para PDF a todos los enlaces
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => {
+          // Agregar atributos para mejor compatibilidad con PDF
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener noreferrer");
+
+          // Agregar título para mejor accesibilidad
+          if (!link.hasAttribute("title")) {
+            link.setAttribute("title", link.href);
+          }
+        });
+
+        // Función para manejar clics en enlaces (útil para PDF)
+        document.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            // Asegurar que el enlace se abra correctamente
+            e.preventDefault();
+            window.open(e.target.href, "_blank", "noopener,noreferrer");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body class="antialiased text-gray-800">
+    <!-- Ajustado a max-w-6xl para simular un ancho tipo A3 -->
+    <div
+      class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl bg-white shadow-lg rounded-lg my-8"
+    >
+      <!-- Sección de Encabezado (Full Width) -->
+      <header
+        class="flex flex-col sm:flex-row items-center sm:items-start justify-between py-8 pb-6 mb-6 border-b border-gray-200"
+      >
+        <div class="text-center sm:text-left mb-4 sm:mb-0">
+          <h1 class="text-5xl font-bold text-indigo-700 mb-2">
+            Anderson Felipe Cantor Roa
+          </h1>
+          <p
+            class="text-xl font-semibold text-indigo-600 mb-2"
+            id="job-title"
+            data-role="data-analyst"
+          >
+            Junior Data Analyst
+          </p>
+          <p class="text-2x1,5 text-gray-600">
+            <strong
+              >"Master data, embrace truth, shape the future. AI is our tool,
+              and knowledge is our power."</strong
+            >
+          </p>
+          <div
+            class="mt-6 text-gray-700 text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1"
+          >
+            <p>
+              <i class="fas fa-envelope mr-2 text-indigo-500"></i
+              >Felipecantor2019@gmail.com
+            </p>
+            <p>
+              <i class="fas fa-phone mr-2 text-indigo-500"></i>+57 311 268 9126
+            </p>
+            <p>
+              <i class="fab fa-linkedin mr-2 text-indigo-500"></i
+              ><a
+                href="https://linkedin.com/in/AndersonCantorRoa"
+                target="_blank"
+                class="text-indigo-600 hover:underline"
+                >linkedin.com/in/Anderson</a
+              >
+            </p>
+            <p>
+              <i class="fab fa-github mr-2 text-indigo-500"></i
+              ><a
+                href="https://felipecantor.github.io/"
+                target="_blank"
+                class="text-indigo-600 hover:underline"
+                >github.com/FelipeCantor</a
+              >
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i>Bogotá,
+              Colombia
+            </p>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <!-- Foto de perfil cargada desde el archivo -->
+          <img
+            src="assets/img/cv_photo.jpeg"
+            alt="Tu Foto de Perfil"
+            class="profile-pic"
+          />
+        </div>
+      </header>
+
+      <!-- Contenedor principal para las dos columnas -->
+      <main class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <!-- Columna Izquierda (3/5 del ancho en pantallas medianas y grandes) -->
+        <div class="md:col-span-3">
+          <!-- Sección de Presentación -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>Perfil</h2>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              Tecnólogo en Automatización Industrial; Estudiante de Ingeniería
+              Mecatrónica con experiencia en análisis de datos operativos para
+              mejorar la eficiencia empresarial. Manejo Excel, Python, Power BI
+              y Microsoft Power Platform para detectar ineficiencias en procesos
+              y la automatización de soluciones. Capacidad narrativa de datos
+              (Storytelling) para comunicar hallazgos técnicos complejos de
+              forma comprensible. Experiencia liderando proyectos de
+              optimización en equipos multidisciplinarios, adaptándome
+              rápidamente a presión y enfocándome en resultados medibles que
+              impacten la operación.
+            </p>
+          </section>
+
+          <!-- Sección de Experiencia Laboral -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>Experiencia Laboral</h2>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-gray-800">
+                Analista de Datos - OPM
+              </h3>
+              <p class="text-indigo-600 font-medium">BDO Colombia</p>
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-calendar-alt mr-2"></i>Nov 2023 – Ago 2024
+                <span class="ml-4"
+                  ><i class="fas fa-map-marker-alt mr-2"></i>Bogotá</span
+                >
+              </p>
+              <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                <li>
+                  Desarrollé arquitectura de dashboards gerenciales en Power BI
+                  con el fin de llevar a cabo monitoreo estratégico de recursos,
+                  estableciendo comparaciones automáticas entre horas trabajadas
+                  vs. planificadas proporcionando visibilidad ejecutiva
+                  instantánea sobre rendimientos de proyectos.
+                </li>
+                <li>
+                  Lideré auditorías integrales de eficiencia del Staff mediante
+                  análisis correlacional de datos WIP (Work in Progress) en CRM
+                  interna contra asignaciones horarias, identificando patrones
+                  críticos de sobrecarga laboral (colaboradores >12h/día),
+                  cuantificando desviaciones financieras por asignaciones
+                  ineficientes con impacto directo en rentabilidad.
+                </li>
+                <li>
+                  Diseñé e implementé sistemas inteligentes mediante uso de
+                  Power Automate-Excel, de redistribución de recursos que
+                  detectaba asignaciones y disponibilidad en tiempo real entre
+                  líneas de servicio, facilitando redistribución estratégica de
+                  personal en disposición hacia líneas con carga crítica,
+                  logrando 30% de reducción en sobrecargas en la línea de
+                  Sostenibilidad y Consulting sin requerir de un nuevo
+                  colaborador.
+                </li>
+                <li>
+                  Implementé protocolos de control mediante la implementación de
+                  nuevas políticas para registro preciso de tiempos.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-gray-800">
+                Analista de Servicios
+              </h3>
+              <p class="text-indigo-600 font-medium">
+                ABS RedSist Compañía de Asistencia Mundial
+              </p>
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-calendar-alt mr-2"></i>Oct 2021 – Abr 2023
+                <span class="ml-4"
+                  ><i class="fas fa-map-marker-alt mr-2"></i>Bogotá</span
+                >
+              </p>
+              <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                <li>
+                  Desarrollé informes técnicos basados en análisis de bases de
+                  datos (Excel), detectando patrones y tendencias para la toma
+                  de decisiones estratégicas.
+                </li>
+                <li>
+                  Gestioné y optimicé procesos de atención al cliente,
+                  reduciendo tiempos de respuesta en un 25% y mejorando la
+                  satisfacción del usuario.
+                </li>
+                <li>
+                  Implementé protocolos de calidad al diseñar matrices de
+                  calificación mediante las cuales se podía evaluar el
+                  cumplimiento de cada ítem para garantizar la mejor calidad de
+                  servicio.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Sección de Educación -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>Educación</h2>
+            </div>
+            <div class="mb-4">
+              <h3 class="text-xl font-semibold text-gray-800">
+                Ingeniería Mecatrónica
+              </h3>
+              <p class="text-indigo-600 font-medium">
+                Universidad de San Buenaventura
+              </p>
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-calendar-alt mr-2"></i>2019 – Actualidad
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800">
+                Tecnólogo en Automatización Industrial
+              </h3>
+              <p class="text-indigo-600 font-medium">
+                Universidad de San Buenaventura
+              </p>
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-calendar-alt mr-2"></i>2022 – 2025
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección de IDIOMAS (Movida a la columna izquierda) -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>IDIOMAS</h2>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Español - Nativo</span>
+              <span class="skill-tag">Inglés - Intermedio</span>
+            </div>
+          </section>
+
+          <!-- Sección de Intereses (Movida a la columna izquierda) -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>Intereses</h2>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Tecnología</span>
+              <span class="skill-tag">IA</span>
+              <span class="skill-tag">Ciberseguridad</span>
+              <span class="skill-tag">Sostenibilidad</span>
+              <span class="skill-tag">Kaizen</span>
+            </div>
+          </section>
+        </div>
+
+        <!-- Columna Derecha (2/5 del ancho en pantallas medianas y grandes) -->
+        <div class="md:col-span-2">
+          <!-- Sección de HABILIDADES TÉCNICAS -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>HABILIDADES TÉCNICAS</h2>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Excel Avanzado</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Power Platform</span>
+              <span class="skill-tag">LLMs</span>
+              <span class="skill-tag">LaTeX</span>
+              <span class="skill-tag">Automatización</span>
+            </div>
+          </section>
+
+          <!-- Sección de Certificaciones -->
+          <section class="mb-8">
+            <div class="section-header">
+              <h2>Certificaciones y Diplomados</h2>
+            </div>
+            <div class="space-y-4">
+              <!-- Certificación: Diplomado en Analítica de Datos, Procesamiento de datos -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Diplomado en Analítica de Datos, Procesamiento de
+                    Datos</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Fundación Universitaria Cafam
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>jul. 2025 - Actualidad
+                </p>
+              </div>
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Fundamentos Profesionales de Análisis Empresarial</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Microsoft Learn
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>jul. 2025 - Ago. 2025
+                </p>
+              </div>
+
+              <!-- Certificación: PL-900; Power Platform Fundamentals -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >PL-900; Power Platform Fundamentals</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Fundación Universitaria Cafam
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>ene. 2025 - mar. 2025
+                </p>
+              </div>
+
+              <!-- Certificación: Power BI: Análisis y Visualización de Tableros Interactivos -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Power BI: Análisis y Visualización de Tableros
+                    Interactivos</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Fundación Universitaria Cafam
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>feb. 2025 - mar. 2025
+                </p>
+              </div>
+
+              <!-- Certificación: Análisis Exploratorio de Datos en Python -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Análisis Exploratorio de Datos en Python</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Servicio Nacional de Aprendizaje (SENA)
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>jul. 2024 - ago. 2024
+                </p>
+              </div>
+
+              <!-- Certificación: COMMUNICATION SKILLS (DIPLOMADO) -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >COMMUNICATION SKILLS (DIPLOMADO)</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  U. de San Buenaventura, Bogotá
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>2024 - jun. 2024
+                </p>
+              </div>
+              <!-- Certificación: MARCO LOGICO DE PROYECTOS: IDENTIFICACION Y ANALISIS -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >MARCO LÓGICO DE PROYECTOS: IDENTIFICACIÓN Y ANÁLISIS</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Servicio Nacional de Aprendizaje (SENA)
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>feb. 2024 - feb. 2024
+                </p>
+              </div>
+              <!-- Certificación: Bases De Datos Generalidades Y Sistemas De Gestion -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Bases de Datos: Generalidades y Sistemas de Gestión</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Servicio Nacional de Aprendizaje (SENA)
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>ene. 2024 - mar. 2024
+                </p>
+              </div>
+              <!-- Certificación: Principios Excel y Access para el Desarrollo de Aplicaciones Administrativas Empresariales -->
+              <div class="cert-item">
+                <h3 class="text-lg font-semibold text-gray-800 leading-tight">
+                  <span class="skill-tag"
+                    >Principios Excel y Access para el Desarrollo de
+                    Aplicaciones Administrativas Empresariales</span
+                  >
+                </h3>
+                <p class="text-indigo-600 font-medium text-sm">
+                  Servicio Nacional de Aprendizaje (SENA)
+                </p>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-calendar-alt mr-2"></i>nov. 2023 - dic. 2023
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Sección de Referencias -->
+          <section>
+            <div class="section-header">
+              <h2>Referencias</h2>
+            </div>
+            <div class="mb-4">
+              <p class="font-semibold text-gray-800">Aldemar Parra</p>
+              <p class="text-indigo-600 text-sm">
+                Coordinador de Operaciones Corona
+              </p>
+              <p class="text-gray-700 text-sm">
+                Ing. Infraestructura y Obras Civiles
+              </p>
+              <p class="text-gray-700 text-sm">
+                <i class="fas fa-phone mr-2 text-indigo-500"></i>3214414416
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">Miguel Ángel Cabezas</p>
+              <p class="text-indigo-600 text-sm">Ing. Ambiental</p>
+              <p class="text-gray-700 text-sm">
+                <i class="fas fa-envelope mr-2 text-indigo-500"></i
+                >mcabezasu.20@gmail.com
+              </p>
+              <p class="text-gray-700 text-sm">
+                <i class="fas fa-phone mr-2 text-indigo-500"></i>3134669932
+              </p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

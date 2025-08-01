@@ -1,0 +1,390 @@
+/* Estilos para la sección académica */
+
+.academica {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Pestañas de navegación */
+.academica-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: 2px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.tab-btn:hover::before,
+.tab-btn.active::before {
+  left: 0;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Contenido de pestañas */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Línea de tiempo académica */
+.timeline-academica {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-academica::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 80px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 0 4px var(--primary-color);
+  z-index: 2;
+  position: relative;
+}
+
+.marker-line {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--primary-color), transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item:last-child .marker-line {
+  display: none;
+}
+
+/* Contenido de la línea de tiempo */
+.timeline-content {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid white;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Encabezado académico */
+.academica-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.academica-icon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.academica-info {
+  flex: 1;
+}
+
+.academica-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.academica-institution {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+}
+
+.academica-period {
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* Descripción */
+.academica-description {
+  margin-bottom: 20px;
+}
+
+.academica-description p {
+  color: var(--text-medium);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Botón de certificado */
+.academica-certificate {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.certificate-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.certificate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.certificate-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.certificate-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* Modal para certificados */
+.certificate-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.certificate-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.certificate-modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.certificate-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .academica-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab-btn {
+    width: 200px;
+  }
+  
+  .timeline-academica::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    padding-left: 60px;
+  }
+  
+  .timeline-marker {
+    width: 40px;
+  }
+  
+  .academica-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .academica-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  
+  .academica-title {
+    font-size: 16px;
+  }
+  
+  .academica-institution {
+    font-size: 14px;
+  }
+  
+  .certificate-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-content {
+    padding: 20px;
+  }
+  
+  .academica-title {
+    font-size: 15px;
+  }
+  
+  .academica-description p {
+    font-size: 14px;
+  }
+} 

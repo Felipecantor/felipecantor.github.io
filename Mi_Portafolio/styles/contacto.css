@@ -1,0 +1,903 @@
+/* ===== CONTACTO STYLES ===== */
+
+.contacto {
+    background: var(--bg-white);
+    position: relative;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Elementos decorativos dinámicos */
+.contacto-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.decoration-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.decoration-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.contacto-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+    max-width: clamp(1200px, 85vw, 1600px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Información de contacto */
+.contacto-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Badges dinámicos */
+.header-badge, .form-badge, .social-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: linear-gradient(135deg, var(--primary-color), #4f46e5);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    animation: slideInDown 0.6s ease-out;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.badge-icon {
+    font-size: var(--font-size-sm);
+}
+
+.badge-text {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contacto-info h3 {
+    color: var(--primary-color);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.contacto-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Estadísticas de confianza */
+.confidence-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(79, 70, 229, 0.05));
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Nueva estructura de matriz 2x2 - SOLUCIÓN RESPONSIVE MEJORADA */
+.contacto-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(16px, 2vw, 48px);
+    margin-bottom: var(--spacing-xl);
+    width: 100%;
+}
+
+/* Configuración específica para diferentes breakpoints */
+@media (min-width: 768px) {
+    .contacto-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(24px, 3vw, 40px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .contacto-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(32px, 4vw, 48px);
+    }
+}
+
+/* Breakpoint específico para monitores 24" (1920x1080) */
+@media (min-width: 1400px) {
+    .contacto-content {
+        max-width: clamp(1400px, 90vw, 1800px);
+    }
+    
+    .contacto-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(40px, 5vw, 56px);
+    }
+    
+    .contacto-item {
+        padding: clamp(var(--spacing-md), 2vw, var(--spacing-xl));
+    }
+}
+
+/* Breakpoint específico para monitores 27"+ (2560x1440) */
+@media (min-width: 1600px) {
+    .contacto-content {
+        max-width: clamp(1600px, 92vw, 2000px);
+    }
+    
+    .contacto-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(48px, 6vw, 64px);
+    }
+    
+    .contacto-item {
+        padding: clamp(var(--spacing-lg), 2.5vw, calc(var(--spacing-xl) + 8px));
+    }
+    
+    .contacto-icon {
+        width: clamp(50px, 4vw, 60px);
+        height: clamp(50px, 4vw, 60px);
+        font-size: clamp(var(--font-size-xl), 2vw, calc(var(--font-size-xl) + 4px));
+    }
+}
+
+/* Breakpoint para monitores ultra-wide (3440x1440) */
+@media (min-width: 2000px) {
+    .contacto-content {
+        max-width: clamp(1800px, 95vw, 2400px);
+    }
+    
+    .contacto-details-grid {
+        gap: clamp(56px, 7vw, 80px);
+    }
+}
+
+.contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-light);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    min-width: 280px;
+    width: 100%;
+}
+
+.contacto-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.contacto-item:hover::before {
+    left: 100%;
+}
+
+.contacto-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+/* Icon wrapper con animación */
+.contacto-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacto-icon {
+    font-size: var(--font-size-xl);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    transition: all var(--transition-normal);
+}
+
+.icon-pulse {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+}
+
+.contacto-item:hover .contacto-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contacto-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    width: 100%;
+}
+
+.contacto-text h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.contacto-text p {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Estilos para el enlace de LinkedIn */
+.contacto-link {
+    margin-top: var(--spacing-xs);
+}
+
+.linkedin-link {
+    display: flex;
+    align-items: center;
+    color: #0a66c2;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-fast);
+}
+
+.linkedin-link:hover {
+    color: #004182;
+    transform: translateX(4px);
+}
+
+.linkedin-link svg {
+    margin-right: var(--spacing-xs);
+}
+
+/* Formulario */
+.contacto-form {
+    background: var(--bg-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.contacto-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.form-header {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.form-header h3 {
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-header p {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.form-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-input,
+.form-textarea {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+    transition: all var(--transition-fast);
+    background: var(--bg-white);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-submit {
+    margin-top: var(--spacing-md);
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.form-submit:hover::before {
+    left: 100%;
+}
+
+/* ===== SECCIÓN DE REDES SOCIALES PROMINENTE ===== */
+.social-media-section {
+    margin-top: var(--spacing-3xl);
+    padding: var(--spacing-2xl) 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.02), rgba(79, 70, 229, 0.02));
+    border-radius: var(--border-radius-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-media-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.social-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    z-index: 2;
+}
+
+.social-header h3 {
+    color: var(--primary-color);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.social-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid de tarjetas sociales */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(24px, 3vw, 48px);
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .social-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tarjetas sociales */
+.social-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.social-card:hover::before {
+    left: 100%;
+}
+
+.social-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+/* Header de tarjeta social */
+.social-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.social-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-normal);
+}
+
+/* Colores específicos por red social */
+.social-card.linkedin .social-icon-wrapper {
+    background: linear-gradient(135deg, #0a66c2, #0077b5);
+    color: white;
+}
+
+.social-card.github .social-icon-wrapper {
+    background: linear-gradient(135deg, #333, #24292e);
+    color: white;
+}
+
+.social-card.twitter .social-icon-wrapper {
+    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+    color: white;
+}
+
+.social-card.instagram .social-icon-wrapper {
+    background: linear-gradient(135deg, #e4405f, #c13584);
+    color: white;
+}
+
+.social-card:hover .social-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Estadísticas de redes sociales */
+.social-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.social-followers {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.social-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contenido de tarjeta social */
+.social-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.social-card-content h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.social-card-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Acción de tarjeta social */
+.social-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all var(--transition-fast);
+}
+
+.social-card:hover .social-action {
+    color: var(--primary-color);
+}
+
+.social-action svg {
+    transition: transform var(--transition-fast);
+}
+
+.social-card:hover .social-action svg {
+    transform: translateX(4px);
+}
+
+/* Estadísticas generales de redes sociales */
+.social-stats-overview {
+    display: flex;
+    justify-content: center;
+    gap: clamp(var(--spacing-xl), 4vw, var(--spacing-2xl));
+    margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 2;
+}
+
+.stat-overview-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+}
+
+.stat-overview-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.stat-overview-item .stat-number {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-overview-item .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== ANIMACIONES ===== */
+.contacto-content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.contacto-item {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.contacto-item:nth-child(1) { animation-delay: 0.1s; }
+.contacto-item:nth-child(2) { animation-delay: 0.2s; }
+.contacto-item:nth-child(3) { animation-delay: 0.3s; }
+.contacto-item:nth-child(4) { animation-delay: 0.4s; }
+
+.social-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.social-card:nth-child(1) { animation-delay: 0.5s; }
+.social-card:nth-child(2) { animation-delay: 0.6s; }
+.social-card:nth-child(3) { animation-delay: 0.7s; }
+.social-card:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .contacto-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .contacto-form {
+        order: -1;
+    }
+    
+    .confidence-stats {
+        gap: var(--spacing-md);
+    }
+    
+    .social-stats-overview {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .contacto-details-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .contacto-item {
+        padding: var(--spacing-sm);
+        flex-direction: row;
+        align-items: center;
+        min-width: auto;
+    }
+    
+    .contacto-icon {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-lg);
+    }
+    
+    .contacto-description {
+        font-size: var(--font-size-base);
+    }
+    
+    .contacto-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .confidence-stats {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .social-card {
+        padding: var(--spacing-md);
+    }
+    
+    .social-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .social-stats {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-content {
+        gap: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .contacto-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+        min-width: auto;
+    }
+    
+    .contacto-icon {
+        width: 35px;
+        height: 35px;
+        font-size: var(--font-size-base);
+    }
+    
+    .contacto-form {
+        padding: var(--spacing-md);
+    }
+    
+    .contacto-details-grid {
+        gap: 16px;
+    }
+    
+    .social-media-section {
+        margin-top: var(--spacing-xl);
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .social-header h3 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .social-description {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.contacto-item:hover .contacto-icon {
+    transform: scale(1.1);
+}
+
+/* ===== FORM VALIDATION ===== */
+.form-input:invalid,
+.form-textarea:invalid {
+    border-color: #ef4444;
+}
+
+.form-input:valid,
+.form-textarea:valid {
+    border-color: #10b981;
+}
+
+/* ===== GRADIENT BACKGROUND ANIMATION ===== */
+.contacto::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.03) 50%, transparent 70%);
+    animation: gradientShift 10s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+} 
