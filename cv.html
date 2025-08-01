@@ -187,6 +187,7 @@
         });
       });
     </script>
+    <script src="js/contact-protection.js"></script>
   </head>
   <body class="antialiased text-gray-800">
     <!-- Ajustado a max-w-6xl para simular un ancho tipo A3 -->
@@ -218,11 +219,12 @@
             class="mt-6 text-gray-700 text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1"
           >
             <p>
-              <i class="fas fa-envelope mr-2 text-indigo-500"></i
-              >Felipecantor2019@gmail.com
+              <i class="fas fa-envelope mr-2 text-indigo-500"></i>
+              <a href="#" data-contact="email" onclick="revealContact(this, 'email')">Click to reveal email</a>
             </p>
             <p>
-              <i class="fas fa-phone mr-2 text-indigo-500"></i>+57 311 268 9126
+              <i class="fas fa-phone mr-2 text-indigo-500"></i>
+              <a href="#" data-contact="phone" onclick="revealContact(this, 'phone')">Click to reveal phone</a>
             </p>
             <p>
               <i class="fab fa-linkedin mr-2 text-indigo-500"></i

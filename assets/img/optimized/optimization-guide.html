@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Optimization Guide</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .recommendation { background: #f0f9ff; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
+        .code { background: #1f2937; color: #f9fafb; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+        .size { color: #dc2626; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Image Optimization Guide</h1>
+    <p>Current images analysis and optimization recommendations:</p>
+    
+    <div class="recommendation">
+        <h3>📊 Current Status</h3>
+        <ul>
+            <li><strong>Foto_EN_guatape.jpg:</strong> <span class="size">352KB</span> - Needs compression</li>
+            <li><strong>Foto_de_grado_con_papa.jpg:</strong> <span class="size">282KB</span> - Needs compression</li>
+            <li><strong>cv_photo.jpeg:</strong> <span class="size">99KB</span> - Moderate optimization needed</li>
+            <li><strong>Foto_en_playa.jpeg:</strong> <span class="size">68KB</span> - Minor optimization</li>
+        </ul>
+    </div>
+    
+    <div class="recommendation">
+        <h3>🛠️ Optimization Commands</h3>
+        <p>Use these commands to optimize your images:</p>
+        <pre class="code">
+# Using ImageMagick (if available)
+convert assets/img/Foto_EN_guatape.jpg -quality 80 -resize 800x600> assets/img/optimized/Foto_EN_guatape.jpg
+convert assets/img/Foto_de_grado_con_papa.jpg -quality 80 -resize 800x600> assets/img/optimized/Foto_de_grado_con_papa.jpg
+convert assets/img/cv_photo.jpeg -quality 85 -resize 400x400> assets/img/optimized/cv_photo.jpeg
+
+# Convert to WebP
+cwebp -q 80 assets/img/Foto_EN_guatape.jpg -o assets/img/optimized/Foto_EN_guatape.webp
+cwebp -q 80 assets/img/Foto_de_grado_con_papa.jpg -o assets/img/optimized/Foto_de_grado_con_papa.webp
+        </pre>
+    </div>
+    
+    <div class="recommendation">
+        <h3>🔧 Implementation Code</h3>
+        <p>Use this HTML structure for optimized images:</p>
+        <pre class="code">
+&lt;picture&gt;
+  &lt;source srcset="assets/img/optimized/image.webp" type="image/webp"&gt;
+  &lt;img src="assets/img/image.jpg" alt="Description" loading="lazy" class="lazy-load"&gt;
+&lt;/picture&gt;
+        </pre>
+    </div>
+    
+    <script>
+        // Lazy loading implementation
+        const lazyImages = document.querySelectorAll('.lazy-load');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    </script>
+</body>
+</html>

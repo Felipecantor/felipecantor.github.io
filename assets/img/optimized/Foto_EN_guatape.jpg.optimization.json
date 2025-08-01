@@ -1,0 +1,15 @@
+{
+  "filename": "Foto_EN_guatape.jpg",
+  "originalSize": 360423,
+  "recommendations": [
+    "Compress image to reduce file size by 60-80%",
+    "Consider converting to WebP format",
+    "Implement lazy loading",
+    "Use responsive images with srcset",
+    "Add proper alt text for accessibility"
+  ],
+  "webpSupport": {
+    "html": "<picture>\n  <source srcset=\"assets/img/optimized/Foto_EN_guatape.webp\" type=\"image/webp\">\n  <img src=\"assets/img/Foto_EN_guatape.jpg\" alt=\"Description\" loading=\"lazy\" class=\"lazy-load\">\n</picture>",
+    "css": ".lazy-load {\n  opacity: 0;\n  transition: opacity 0.3s ease;\n}\n.lazy-load.loaded {\n  opacity: 1;\n}"
+  }
+}

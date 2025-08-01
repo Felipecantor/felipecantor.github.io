@@ -1,0 +1,11 @@
+{
+  "filename": "Foto_en_playa.jpeg",
+  "originalSize": 69251,
+  "recommendations": [
+    "Add proper alt text for accessibility"
+  ],
+  "webpSupport": {
+    "html": "<picture>\n  <source srcset=\"assets/img/optimized/Foto_en_playa.webp\" type=\"image/webp\">\n  <img src=\"assets/img/Foto_en_playa.jpeg\" alt=\"Description\" loading=\"lazy\" class=\"lazy-load\">\n</picture>",
+    "css": ".lazy-load {\n  opacity: 0;\n  transition: opacity 0.3s ease;\n}\n.lazy-load.loaded {\n  opacity: 1;\n}"
+  }
+}
