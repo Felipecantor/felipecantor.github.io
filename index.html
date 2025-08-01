@@ -13,22 +13,31 @@
       rel="stylesheet"
     />
 
-    <!-- Critical CSS - Optimized and Inlined -->
-    <link rel="stylesheet" href="styles/optimized.css" />
+    <!-- Estilos principales - Tema minimalista oscuro -->
+    <link rel="stylesheet" href="styles/main.css" />
     
-    <!-- Non-critical CSS - Deferred loading -->
-    <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+    <!-- Estilos por sección - Carga inmediata para mantener diseño -->
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/navbar-modern.css" />
+    <link rel="stylesheet" href="styles/hero.css" />
+    <link rel="stylesheet" href="styles/sobre-mi.css" />
+    <link rel="stylesheet" href="styles/academica.css" />
+    <link rel="stylesheet" href="styles/proyectos-u.css" />
+    <link rel="stylesheet" href="styles/proyectos-trabajo.css" />
+    <link rel="stylesheet" href="styles/proyectos-personales.css" />
+    <link rel="stylesheet" href="styles/experiencias.css" />
+    <link rel="stylesheet" href="styles/contacto.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
     
-    <!-- Section-specific CSS - Loaded on demand -->
-    <link rel="preload" href="styles/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="styles/hero.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="styles/contacto.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- Effects and animations - Lowest priority -->
-    <link rel="preload" href="styles/effects.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
-    <link rel="preload" href="styles/background-animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
-    <link rel="preload" href="styles/notifications.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
+    <!-- Efectos y animaciones - Carga diferida -->
+    <link rel="preload" href="styles/effects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/background-animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/notifications.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="styles/effects.css">
+      <link rel="stylesheet" href="styles/background-animations.css">
+      <link rel="stylesheet" href="styles/notifications.css">
+    </noscript>
   </head>
 
   <body>
