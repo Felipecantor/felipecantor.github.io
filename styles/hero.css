@@ -275,7 +275,7 @@
 }
 
 .card-text {
-    color: var(--text-dark) !important; /* Color oscuro para el texto */
+    color: var(--bg-white) !important; /* Color oscuro para el texto */
     font-weight: 600;
 }
 
@@ -422,4 +422,5 @@
         font-size: var(--font-size-sm);
     }
 } 
+
 } 
