@@ -1,21 +1,78 @@
-/* ===== ANIMACIONES DE FONDO PARA TODAS LAS SECCIONES ===== */
+/* ===== BACKGROUND ANIMATIONS ===== */
 
-/* Configuración base para todas las secciones */
-.hero,
-.sobre-mi,
-.proyectos-u,
-.proyectos-trabajo,
-.proyectos-personales,
-.experiencias,
-.cv,
-.contacto,
-.footer {
+/* Animaciones de fondo para toda la página */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+/* Animación de partículas flotantes */
+.particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    animation: particleFloat 8s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 1s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 3s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 5s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 0.5s; }
+.particle:nth-child(10) { left: 95%; animation-delay: 2.5s; }
+
+/* Gradientes animados para secciones */
+.section {
     position: relative;
     overflow: hidden;
 }
 
-/* Hero Section - Animación de gradiente dinámico */
-.hero::before {
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.02) 0%, 
+        transparent 50%, 
+        rgba(59, 130, 246, 0.02) 100%);
+    pointer-events: none;
+    z-index: 0;
+    animation: sectionGlow 10s ease-in-out infinite;
+}
+
+/* Efecto de ondas para secciones específicas */
+.wave-section {
+    position: relative;
+}
+
+.wave-section::after {
     content: '';
     position: absolute;
     top: 0;
@@ -23,163 +80,145 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
     z-index: 0;
-    animation: backgroundPulse 6s ease-in-out infinite;
+    animation: wavePulse 6s ease-in-out infinite;
 }
 
-/* Sobre Mí Section - Animación de ondas suaves */
-.sobre-mi::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(ellipse at 30% 70%, rgba(59, 130, 246, 0.03) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 30%, rgba(96, 165, 250, 0.03) 0%, transparent 60%);
-    z-index: 0;
-    animation: waveBackground 12s ease-in-out infinite;
-}
-
-/* Proyectos Section - Animación de puntos flotantes */
-.proyectos-u::before,
-.proyectos-trabajo::before,
-.proyectos-personales::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.02) 0%, transparent 40%),
-        radial-gradient(circle at 75% 75%, rgba(96, 165, 250, 0.02) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.01) 0%, transparent 60%);
-    z-index: 0;
-    animation: floatingDots 15s ease-in-out infinite;
-}
-
-/* Experiencias Section - Animación de líneas dinámicas */
-.experiencias::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.02) 50%, transparent 70%),
-        linear-gradient(-45deg, transparent 30%, rgba(96, 165, 250, 0.02) 50%, transparent 70%);
-    z-index: 0;
-    animation: diagonalLines 18s ease-in-out infinite;
-}
-
-/* CV Section - Animación de gradiente rotativo */
-.cv::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(59, 130, 246, 0.02) 90deg, transparent 180deg, rgba(96, 165, 250, 0.02) 270deg, transparent 360deg);
-    z-index: 0;
-    animation: rotatingGradient 20s linear infinite;
-}
-
-/* Footer Section - Animación de ondas múltiples */
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.01) 0%, transparent 70%);
-    z-index: 0;
-    animation: multipleWaves 25s ease-in-out infinite;
-}
-
-/* Navbar - Animación sutil */
-.navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent 30%, rgba(59, 130, 246, 0.01) 50%, transparent 70%);
-    z-index: 0;
-    animation: navbarShimmer 8s ease-in-out infinite;
-}
-
-/* ===== KEYFRAMES PARA ANIMACIONES DE FONDO ===== */
-
-@keyframes backgroundPulse {
-    0%, 100% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-}
-
-@keyframes waveBackground {
+/* Animación de fondo principal */
+@keyframes backgroundShift {
     0%, 100% {
         transform: translateX(0) translateY(0);
-        opacity: 0.5;
+        opacity: 0.8;
     }
     25% {
         transform: translateX(-10px) translateY(-5px);
-        opacity: 0.8;
+        opacity: 1;
     }
     50% {
         transform: translateX(5px) translateY(-10px);
-        opacity: 0.6;
+        opacity: 0.9;
     }
     75% {
         transform: translateX(-5px) translateY(5px);
-        opacity: 0.9;
+        opacity: 1;
     }
 }
 
-@keyframes floatingDots {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.3;
+/* Animación de partículas */
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
     }
-    33% {
-        transform: translateY(-15px) rotate(120deg);
-        opacity: 0.6;
+    10% {
+        opacity: 1;
     }
-    66% {
-        transform: translateY(10px) rotate(240deg);
-        opacity: 0.4;
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
     }
 }
 
-@keyframes diagonalLines {
+/* Animación de brillo de sección */
+@keyframes sectionGlow {
     0%, 100% {
-        transform: translateX(-50px) translateY(-50px) rotate(45deg);
         opacity: 0.3;
+        transform: scale(1);
     }
     50% {
-        transform: translateX(50px) translateY(50px) rotate(45deg);
-        opacity: 0.7;
+        opacity: 0.6;
+        transform: scale(1.02);
     }
 }
 
-@keyframes rotatingGradient {
+/* Animación de ondas */
+@keyframes wavePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Efecto de gradiente móvil */
+.gradient-move {
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-move::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(59, 130, 246, 0.1), 
+        transparent);
+    animation: gradientMove 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientMove {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Efecto de respiración para contenedores */
+.breathing-container {
+    animation: breathing 4s ease-in-out infinite;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+}
+
+/* Efecto de pulso para elementos importantes */
+.pulse-element {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Efecto de rotación suave */
+.rotate-slow {
+    animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
     0% {
         transform: rotate(0deg);
     }
@@ -188,78 +227,111 @@
     }
 }
 
-@keyframes multipleWaves {
+/* Efecto de flotación */
+.float-element {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
     0%, 100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 0.4;
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Efecto de brillo */
+.glow-element {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+}
+
+/* Efecto de ondas para botones */
+.wave-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.wave-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Efecto de partículas para secciones especiales */
+.particle-section {
+    position: relative;
+}
+
+.particle-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: particleShift 15s ease-in-out infinite;
+}
+
+@keyframes particleShift {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
     }
     25% {
-        transform: scale(1.1) rotate(90deg);
-        opacity: 0.7;
+        transform: translateX(-20px) translateY(-10px);
     }
     50% {
-        transform: scale(0.9) rotate(180deg);
-        opacity: 0.5;
+        transform: translateX(10px) translateY(-20px);
     }
     75% {
-        transform: scale(1.05) rotate(270deg);
-        opacity: 0.8;
+        transform: translateX(-10px) translateY(10px);
     }
 }
 
-@keyframes navbarShimmer {
-    0%, 100% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    50% {
-        transform: translateX(100%);
-        opacity: 1;
-    }
-}
-
-/* ===== ASEGURAR QUE EL CONTENIDO ESTÉ SOBRE LAS ANIMACIONES ===== */
-
-.hero-content,
-.sobre-mi-content,
-.proyectos-content,
-.experiencias-content,
-.cv-content,
-.contacto-content,
-.footer-content,
-.navbar-content {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== RESPONSIVE PARA ANIMACIONES ===== */
+/* Optimización para dispositivos móviles */
 @media (max-width: 768px) {
-    /* Reducir intensidad de animaciones en móviles para mejor rendimiento */
-    .hero::before,
-    .sobre-mi::before,
-    .proyectos-u::before,
-    .proyectos-trabajo::before,
-    .proyectos-personales::before,
-    .experiencias::before,
-    .cv::before,
-    .footer::before,
-    .navbar::before {
-        animation-duration: 20s;
-        opacity: 0.5;
+    .particle {
+        display: none; /* Ocultar partículas en móvil para mejor performance */
+    }
+    
+    body::before {
+        animation-duration: 30s; /* Más lento en móvil */
     }
 }
 
+/* Optimización para preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-    /* Deshabilitar animaciones para usuarios que prefieren menos movimiento */
-    .hero::before,
-    .sobre-mi::before,
-    .proyectos-u::before,
-    .proyectos-trabajo::before,
-    .proyectos-personales::before,
-    .experiencias::before,
-    .cv::before,
-    .footer::before,
-    .navbar::before {
-        animation: none;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 } 

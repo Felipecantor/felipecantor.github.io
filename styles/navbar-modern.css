@@ -9,7 +9,7 @@
     border-bottom: 1px solid rgba(59, 130, 246, 0.2);
     z-index: 1000;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1rem 0;
+    padding: 1.25rem 0;
 }
 
 /* Navbar más pequeña cuando no está en hero */
@@ -140,7 +140,7 @@
     transition: all 0.3s ease !important;
     color: white !important;
     background: var(--primary-color) !important;
-    margin-left: 1.5rem !important; /* Espacio entre navbar-nav y el botón */
+    margin-left: 2rem !important; /* Más espacio entre navbar-nav y el botón */
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
