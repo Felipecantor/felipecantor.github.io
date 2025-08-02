@@ -1,136 +1,106 @@
-// ===== HERO ANIMATIONS & INTERACTIVITY =====
+/**
+ * Hero Animations System
+ * Restaura todas las animaciones del hero: carrusel, fondo, floating cards
+ */
 
-(function() {
-    'use strict';
-    
-    // Función para inicializar todas las animaciones del hero
-    function initHeroAnimations() {
-        console.log('🎨 Inicializando animaciones del hero...');
+class HeroAnimations {
+    constructor() {
+        this.currentSlide = 0;
+        this.slides = [];
+        this.indicators = [];
+        this.autoPlayInterval = null;
+        this.isInitialized = false;
         
-        // Animación de contador para las estadísticas
-        animateCounters();
-        
-        // Efectos de parallax suave
-        initParallaxEffects();
-        
-        // Animaciones de scroll
-        initScrollAnimations();
-        
-        // Efectos de partículas
-        initParticleEffects();
-        
-        // Interactividad de las tarjetas flotantes
-        initFloatingCards();
-        
-        console.log('✅ Animaciones del hero inicializadas');
+        this.init();
     }
-    
-    // Animación de contadores para las estadísticas
-    function animateCounters() {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        
-        statNumbers.forEach(stat => {
-            const target = parseInt(stat.textContent.replace('+', ''));
-            const duration = 2000; // 2 segundos
-            const increment = target / (duration / 16); // 60fps
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                stat.textContent = Math.floor(current) + '+';
-            }, 16);
-        });
-    }
-    
-    // Efectos de parallax suave
-    function initParallaxEffects() {
-        const hero = document.querySelector('.hero');
-        const floatingCards = document.querySelectorAll('.floating-card');
-        
-        if (!hero) return;
-        
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            floatingCards.forEach((card, index) => {
-                const speed = (index + 1) * 0.1;
-                card.style.transform = `translateY(${rate * speed}px)`;
-            });
-        });
-    }
-    
-    // Animaciones de scroll
-    function initScrollAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                } else {
-                    entry.target.style.animationPlayState = 'paused';
-                }
-            });
-        }, observerOptions);
-        
-        // Observar elementos del hero
-        const heroElements = document.querySelectorAll('.hero-badge, .hero-title, .hero-description, .hero-stats, .hero-actions');
-        heroElements.forEach(el => observer.observe(el));
-    }
-    
-    // Efectos de partículas
-    function initParticleEffects() {
-        const hero = document.querySelector('.hero');
-        if (!hero) return;
-        
-        // Crear partículas flotantes
-        for (let i = 0; i < 15; i++) {
-            createParticle(hero);
+
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setup());
+        } else {
+            this.setup();
         }
     }
-    
-    function createParticle(container) {
-        const particle = document.createElement('div');
-        particle.className = 'hero-particle';
-        particle.style.cssText = `
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(59, 130, 246, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleFloat 8s linear infinite;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation-delay: ${Math.random() * 8}s;
-        `;
+
+    setup() {
+        this.setupImageGallery();
+        this.setupFloatingCards();
+        this.setupBackgroundAnimations();
+        this.setupScrollAnimations();
         
-        container.appendChild(particle);
-        
-        // Remover partícula después de la animación
-        setTimeout(() => {
-            if (particle.parentNode) {
-                particle.parentNode.removeChild(particle);
-            }
-        }, 8000);
+        this.isInitialized = true;
+        console.log('🎭 Hero Animations System initialized');
     }
-    
-    // Interactividad de las tarjetas flotantes
-    function initFloatingCards() {
-        const floatingCards = document.querySelectorAll('.floating-card');
+
+    setupImageGallery() {
+        // Get slides and indicators
+        this.slides = document.querySelectorAll('.image-container');
+        this.indicators = document.querySelectorAll('.indicator');
         
-        floatingCards.forEach(card => {
+        if (this.slides.length === 0) return;
+
+        // Setup indicators click events
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                this.goToSlide(index);
+            });
+        });
+
+        // Auto-play gallery
+        this.startAutoPlay();
+
+        // Pause on hover
+        const gallery = document.querySelector('.image-gallery');
+        if (gallery) {
+            gallery.addEventListener('mouseenter', () => this.stopAutoPlay());
+            gallery.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
+    }
+
+    goToSlide(index) {
+        // Remove active class from current slide and indicator
+        this.slides[this.currentSlide].classList.remove('active');
+        this.indicators[this.currentSlide].classList.remove('active');
+
+        // Update current slide
+        this.currentSlide = index;
+
+        // Add active class to new slide and indicator
+        this.slides[this.currentSlide].classList.add('active');
+        this.indicators[this.currentSlide].classList.add('active');
+    }
+
+    nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+    }
+
+    startAutoPlay() {
+        if (this.autoPlayInterval) return;
+        
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 4000); // Change slide every 4 seconds
+    }
+
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = null;
+        }
+    }
+
+    setupFloatingCards() {
+        const cards = document.querySelectorAll('.floating-card');
+        
+        cards.forEach((card, index) => {
+            // Add animation delay
+            card.style.animationDelay = `${index * 0.5}s`;
+            
+            // Add hover effects
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'scale(1.15) translateY(-10px)';
-                card.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.3)';
+                card.style.transform = 'translateY(-10px) scale(1.1)';
+                card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
             });
             
             card.addEventListener('mouseleave', () => {
@@ -139,138 +109,46 @@
             });
         });
     }
-    
-    // Efectos de hover para botones
-    function initButtonEffects() {
-        const buttons = document.querySelectorAll('.btn');
-        
-        buttons.forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transform = 'translateY(-2px)';
-                btn.style.boxShadow = '0 10px 20px rgba(59, 130, 246, 0.3)';
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = '';
-                btn.style.boxShadow = '';
-            });
-        });
-    }
-    
-    // Efectos de texto dinámico
-    function initTextEffects() {
-        const title = document.querySelector('.hero-title');
-        if (!title) return;
-        
-        // Efecto de escritura para el título
-        const titleText = title.textContent;
-        title.textContent = '';
-        
-        let i = 0;
-        const typeWriter = setInterval(() => {
-            title.textContent += titleText.charAt(i);
-            i++;
-            if (i >= titleText.length) {
-                clearInterval(typeWriter);
-            }
-        }, 100);
-    }
-    
-    // Efectos de cursor personalizado (DESHABILITADO)
-    function initCustomCursor() {
-        // Cursor personalizado deshabilitado por solicitud del usuario
-        return;
-    }
-    
-    // Efectos de sonido (opcional)
-    function initSoundEffects() {
-        const interactiveElements = document.querySelectorAll('.btn, .floating-card');
-        
-        interactiveElements.forEach(el => {
-            el.addEventListener('click', () => {
-                // Crear efecto de onda de sonido visual
-                const ripple = document.createElement('div');
-                ripple.style.cssText = `
-                    position: absolute;
-                    border: 2px solid rgba(59, 130, 246, 0.5);
-                    border-radius: 50%;
-                    animation: rippleEffect 0.6s ease-out;
-                    pointer-events: none;
-                `;
-                
-                el.appendChild(ripple);
-                
-                setTimeout(() => {
-                    if (ripple.parentNode) {
-                        ripple.parentNode.removeChild(ripple);
-                    }
-                }, 600);
-            });
-        });
-    }
-    
-    // Inicialización cuando el DOM esté listo
-    function init() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initHeroAnimations);
-        } else {
-            initHeroAnimations();
+
+    setupBackgroundAnimations() {
+        // Add background pulse animation
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.animation = 'backgroundPulse 6s ease-in-out infinite';
         }
-        
-        // Inicializar efectos adicionales después de un delay
-        setTimeout(() => {
-            initButtonEffects();
-            initTextEffects();
-            initCustomCursor();
-            initSoundEffects();
-        }, 1000);
+
+        // Add gradient shift animation
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.animation = 'contentFloat 8s ease-in-out infinite';
+        }
     }
-    
-    // Agregar estilos CSS dinámicamente
-    function addDynamicStyles() {
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleFloat {
-                0% {
-                    transform: translateY(100vh) rotate(0deg);
-                    opacity: 0;
+
+    setupScrollAnimations() {
+        // Add scroll indicator animation
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                const nextSection = document.querySelector('#sobre-mi');
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
                 }
-                10% {
-                    opacity: 1;
-                }
-                90% {
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(-100px) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes rippleEffect {
-                0% {
-                    width: 0;
-                    height: 0;
-                    opacity: 1;
-                }
-                100% {
-                    width: 200px;
-                    height: 200px;
-                    opacity: 0;
-                }
-            }
-            
-            .hero-particle {
-                z-index: 1;
-            }
-            
-            .custom-cursor {
-                mix-blend-mode: difference;
-            }
-        `;
-        
-        document.head.appendChild(style);
+            });
+        }
     }
+
+    // Public API
+    refresh() {
+        if (this.isInitialized) {
+            this.setup();
+        }
+    }
+
+    destroy() {
+        this.stopAutoPlay();
+        this.isInitialized = false;
+    }
+<<<<<<< Current (Your changes)
     
     // Inicializar todo
     addDynamicStyles();
@@ -304,3 +182,13 @@
     };
     
 })(); 
+=======
+}
+
+// Initialize Hero Animations
+const heroAnimations = new HeroAnimations();
+
+// Export for global access
+window.HeroAnimations = HeroAnimations;
+window.heroAnimations = heroAnimations; 
+>>>>>>> Incoming (Background Agent changes)
