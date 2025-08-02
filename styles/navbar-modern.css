@@ -1,66 +1,136 @@
-/* ===== NAVBAR MODERN STYLES ===== */
-
-/* Mejorar el navbar principal - TEMA OSCURO */
+/* Navbar Modern Styles */
 .navbar {
-    background: rgba(15, 23, 42, 0.95) !important; /* --bg-white del tema oscuro */
-    backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(71, 85, 105, 0.2) !important; /* --border-color */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
-    transition: all 0.3s ease !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem 0;
 }
 
-/* Mejorar el contenido del navbar */
-.navbar-content {
-    padding: var(--spacing-md) var(--spacing-xl) !important;
-    transition: all 0.3s ease !important;
-    height: 80px !important; /* Altura inicial más grande */
+/* Navbar más pequeña cuando no está en hero */
+.navbar.navbar-scrolled {
+    padding: 0.5rem 0;
+    background: rgba(15, 23, 42, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Mejorar el logo */
-.navbar-logo {
-    font-size: var(--font-size-2xl) !important;
-    font-weight: 700 !important;
-    padding: var(--spacing-sm) var(--spacing-md) !important;
-    border-radius: var(--border-radius-lg) !important;
-    transition: all 0.3s ease !important;
-    color: var(--text-dark) !important; /* Texto claro */
+.navbar.navbar-scrolled .navbar-brand {
+    font-size: 1.25rem;
 }
 
-.navbar-logo:hover {
-    background: rgba(59, 130, 246, 0.2) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+.navbar.navbar-scrolled .navbar-nav .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
 }
 
-/* Mejorar la navegación */
+.navbar.navbar-scrolled .navbar-cv-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.brand-name {
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.brand-title {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+}
+
 .navbar-nav {
-    background: rgba(30, 41, 59, 0.8) !important; /* --bg-light */
-    padding: var(--spacing-sm) var(--spacing-lg) !important;
-    border-radius: var(--border-radius-xl) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(71, 85, 105, 0.3) !important;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2) !important;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
 }
 
-/* Mejorar los enlaces de navegación */
-.nav-link {
-    padding: var(--spacing-sm) var(--spacing-md) !important;
-    font-weight: 500 !important;
-    border-radius: var(--border-radius-md) !important;
-    transition: all 0.3s ease !important;
-    border: 1px solid transparent !important;
-    color: var(--text-dark) !important; /* Texto claro */
+.navbar-nav .nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-lg);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-link:hover {
-    background: rgba(59, 130, 246, 0.2) !important;
-    border-color: rgba(59, 130, 246, 0.4) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.25) !important;
-    color: var(--primary-color) !important;
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+    transition: left 0.6s;
 }
 
-/* Mejorar el botón CV */
+.navbar-nav .nav-link:hover::before {
+    left: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+}
+
 .navbar-cv-btn {
     padding: var(--spacing-sm) var(--spacing-lg) !important;
     border-radius: var(--border-radius-xl) !important;
@@ -70,55 +140,42 @@
     transition: all 0.3s ease !important;
     color: white !important;
     background: var(--primary-color) !important;
+    margin-left: 1.5rem !important; /* Espacio entre navbar-nav y el botón */
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
 }
 
 .navbar-cv-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4) !important;
     background: var(--primary-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4) !important;
 }
 
-/* Efectos de scroll mejorados - NAVBAR MÁS PEQUEÑO */
-.navbar.scrolled {
-    background: rgba(15, 23, 42, 0.98) !important; /* Mantener fondo oscuro */
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4) !important;
-    border-bottom: 1px solid rgba(71, 85, 105, 0.3) !important;
+.navbar-cv-btn:active {
+    transform: translateY(0) !important;
 }
 
-.navbar.scrolled .navbar-content {
-    padding: var(--spacing-sm) var(--spacing-xl) !important;
-    height: 60px !important; /* Altura reducida */
-}
-
-.navbar.scrolled .navbar-logo {
-    font-size: var(--font-size-xl) !important;
-    padding: var(--spacing-xs) var(--spacing-sm) !important;
-}
-
-.navbar.scrolled .nav-link {
-    padding: var(--spacing-xs) var(--spacing-sm) !important;
-    font-size: var(--font-size-sm) !important;
-}
-
-.navbar.scrolled .navbar-cv-btn {
-    padding: var(--spacing-xs) var(--spacing-md) !important;
-    font-size: var(--font-size-xs) !important;
-}
-
-/* Responsive mejorado */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .navbar-nav {
-        background: rgba(15, 23, 42, 0.95) !important; /* Fondo oscuro */
-        backdrop-filter: blur(20px) !important;
-        border: 1px solid rgba(71, 85, 105, 0.3) !important;
-        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+    .navbar-container {
+        padding: 0 1rem;
     }
     
-    .nav-link {
-        padding: var(--spacing-md) var(--spacing-lg) !important;
-        margin: var(--spacing-xs) 0 !important;
-        border-radius: var(--border-radius-lg) !important;
-        color: var(--text-dark) !important;
+    .navbar-nav {
+        gap: 1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .navbar-cv-btn {
+        margin-left: 1rem !important;
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
     }
 }
 
