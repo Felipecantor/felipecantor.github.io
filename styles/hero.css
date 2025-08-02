@@ -6,6 +6,7 @@
     background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
     position: relative;
     overflow: hidden;
+    animation: backgroundPulse 6s ease-in-out infinite;
 }
 
 .hero::before {
@@ -18,6 +19,7 @@
     background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
     pointer-events: none;
+    animation: gradientShift 8s ease-in-out infinite;
 }
 
 .hero-content {
@@ -30,6 +32,7 @@
     padding: 0 2rem;
     position: relative;
     z-index: 2;
+    animation: contentFloat 8s ease-in-out infinite;
 }
 
 .hero-text {
@@ -48,10 +51,12 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    animation: badgeGlow 2s ease-in-out infinite;
 }
 
 .badge-icon {
     font-size: 1.2rem;
+    animation: wave 2s ease-in-out infinite;
 }
 
 .hero-title {
@@ -60,6 +65,7 @@
     color: var(--text-dark);
     line-height: 1.1;
     margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 .title-line {
@@ -68,6 +74,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: textGlow 4s ease-in-out infinite;
 }
 
 .hero-description {
@@ -75,6 +82,7 @@
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.6s both;
 }
 
 .hero-stats {
@@ -82,6 +90,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 2.5rem;
+    animation: fadeInUp 0.6s ease-out 0.8s both;
 }
 
 .stat-item {
@@ -92,7 +101,12 @@
     border: 1px solid rgba(59, 130, 246, 0.2);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    animation: statPulse 3s ease-in-out infinite;
 }
+
+.stat-item:nth-child(1) { animation-delay: 0s; }
+.stat-item:nth-child(2) { animation-delay: 0.5s; }
+.stat-item:nth-child(3) { animation-delay: 1s; }
 
 .stat-item:hover {
     transform: translateY(-5px);
@@ -106,6 +120,7 @@
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
+    animation: numberCount 2s ease-out 1s both;
 }
 
 .stat-label {
@@ -118,6 +133,7 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    animation: fadeInUp 0.6s ease-out 1s both;
 }
 
 .btn {
@@ -132,6 +148,23 @@
     border: none;
     cursor: pointer;
     font-size: var(--font-size-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn-primary {
@@ -173,12 +206,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 .hero-image {
     position: relative;
     width: 400px;
     height: 400px;
+    animation: imageFloat 6s ease-in-out infinite;
 }
 
 .image-gallery {
@@ -188,6 +223,8 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 4px solid var(--primary-color);
+    animation: pulseGlow 3s ease-in-out infinite;
 }
 
 .image-container {
@@ -209,6 +246,12 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    transition: transform 0.5s ease;
+    animation: gentleZoom 4s ease-in-out infinite;
+}
+
+.image-gallery:hover .hero-profile-image {
+    transform: scale(1.05);
 }
 
 .image-overlay {
@@ -237,46 +280,55 @@
     background: rgba(59, 130, 246, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    animation: indicatorPulse 2s ease-in-out infinite;
 }
 
 .indicator.active {
     background: var(--primary-color);
     transform: scale(1.2);
+    animation: activeIndicator 1s ease-in-out infinite;
 }
 
-/* Floating Cards - Posición corregida */
+.indicator:hover {
+    background: var(--primary-light);
+}
+
+/* Floating Cards - Corregidas y visibles */
 .floating-card {
     position: absolute;
-    background: var(--bg-white);
-    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 1rem 1.5rem;
     border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: 0.75rem;
     font-size: var(--font-size-sm);
-    font-weight: 500;
-    color: var(--text-dark) !important; /* Color oscuro para que se vea */
+    font-weight: 600;
+    color: var(--text-dark) !important;
     border: 1px solid var(--border-color);
     animation: float 3s ease-in-out infinite;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95) !important; /* Fondo más opaco */
     transition: all 0.3s ease;
-    z-index: 10; /* Asegurar que esté por encima */
+    z-index: 10;
+    min-width: 120px;
 }
 
 .floating-card:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1) !important;
 }
 
 .card-icon {
     font-size: 1.2rem;
+    animation: iconSpin 3s linear infinite;
 }
 
 .card-text {
-    color: var(--text-dark) !important; /* Color oscuro para el texto */
+    color: var(--text-dark) !important;
     font-weight: 600;
+    text-shadow: none;
 }
 
 /* Posiciones específicas para las floating cards */
@@ -288,23 +340,14 @@
 
 .card-2 {
     top: 60%;
-    right: -15%; /* Movido a la derecha para no estar detrás */
+    right: -15%;
     animation-delay: 1s;
 }
 
 .card-3 {
     bottom: 20%;
-    left: -10%; /* Movido más a la izquierda */
+    left: -10%;
     animation-delay: 2s;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
 }
 
 /* Hero Scroll Indicator */
@@ -318,6 +361,14 @@
     align-items: center;
     gap: 1rem;
     color: var(--text-light);
+    animation: fadeInUp 0.6s ease-out 1.4s both;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-scroll:hover {
+    color: var(--primary-color);
+    transform: translateX(-50%) translateY(-2px);
 }
 
 .scroll-indicator {
@@ -340,14 +391,168 @@
     font-weight: 500;
 }
 
-@keyframes scrollPulse {
+/* ===== ANIMACIONES RESTAURADAS ===== */
+@keyframes float {
     0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes scrollPulse {
+    0%, 70%, 100% {
         opacity: 0.5;
         transform: scale(1);
     }
-    50% {
+    35% {
         opacity: 1;
         transform: scale(1.2);
+    }
+}
+
+@keyframes backgroundPulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes contentFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes badgeGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(59, 130, 246, 0.6);
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes statPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes numberCount {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes imageFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.3);
+        border-color: var(--primary-color);
+    }
+    50% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(59, 130, 246, 0.6);
+        border-color: var(--primary-light);
+    }
+}
+
+@keyframes gentleZoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes indicatorPulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes activeIndicator {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+    }
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -369,7 +574,7 @@
     }
 
     .floating-card {
-        display: none; /* Ocultar en móvil para mejor UX */
+        display: none;
     }
 }
 
@@ -421,5 +626,4 @@
         padding: 0.75rem 1.25rem;
         font-size: var(--font-size-sm);
     }
-} 
 } 
