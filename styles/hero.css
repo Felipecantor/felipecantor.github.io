@@ -326,7 +326,7 @@
 }
 
 .card-text {
-    color: var(--bg-white) !important;
+    color: var(--bg-white) !important;/*se cambio el color de la card-text*/
     font-weight: 600;
     text-shadow: none;
 }
