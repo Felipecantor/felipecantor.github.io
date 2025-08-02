@@ -15,7 +15,7 @@
 
     <!-- Estilos principales - Tema minimalista oscuro -->
     <link rel="stylesheet" href="styles/main.css" />
-    
+
     <!-- Estilos por sección - Carga inmediata para mantener diseño -->
     <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="styles/navbar-modern.css" />
@@ -28,25 +28,46 @@
     <link rel="stylesheet" href="styles/experiencias.css" />
     <link rel="stylesheet" href="styles/contacto.css" />
     <link rel="stylesheet" href="styles/footer.css" />
-    
+
     <!-- Mejoras UX/UI -->
     <link rel="stylesheet" href="styles/ux-enhancements.css" />
-    
+
+    <!-- Optimizaciones móviles -->
+    <link rel="stylesheet" href="styles/mobile-optimized.css" />
+
+    <!-- Plataforma universal -->
+    <link rel="stylesheet" href="styles/universal-platform.css" />
+
     <!-- Efectos y animaciones - Carga diferida -->
-    <link rel="preload" href="styles/effects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="styles/background-animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="styles/notifications.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link
+      rel="preload"
+      href="styles/effects.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="styles/background-animations.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="styles/notifications.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <noscript>
-      <link rel="stylesheet" href="styles/effects.css">
-      <link rel="stylesheet" href="styles/background-animations.css">
-      <link rel="stylesheet" href="styles/notifications.css">
+      <link rel="stylesheet" href="styles/effects.css" />
+      <link rel="stylesheet" href="styles/background-animations.css" />
+      <link rel="stylesheet" href="styles/notifications.css" />
     </noscript>
   </head>
 
   <body>
     <!-- Skip link para accesibilidad -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-    
+
     <!-- Mensaje de Bienvenida / Construcción -->
     <!-- Este elemento aparece al cargar la página y se auto-oculta -->
     <div id="welcomeAlert" class="welcome-alert">
@@ -81,36 +102,39 @@
     <main id="main-content">
       <div data-include="sections/hero.html"></div>
 
-    <!-- Sobre Mí -->
-    <div data-include="sections/sobre-mi.html"></div>
+      <!-- Sobre Mí -->
+      <div data-include="sections/sobre-mi.html"></div>
 
-    <!-- Formación Académica -->
-    <div data-include="sections/academica.html"></div>
+      <!-- Formación Académica -->
+      <div data-include="sections/academica.html"></div>
 
-    <!-- Proyectos Universitarios -->
-    <div data-include="sections/proyectos-u.html"></div>
+      <!-- Proyectos Universitarios -->
+      <div data-include="sections/proyectos-u.html"></div>
 
-    <!-- Proyectos de Trabajo -->
-    <div data-include="sections/proyectos-trabajo.html"></div>
+      <!-- Proyectos de Trabajo -->
+      <div data-include="sections/proyectos-trabajo.html"></div>
 
-    <!-- Proyectos Personales -->
-    <div data-include="sections/proyectos-personales.html"></div>
+      <!-- Proyectos Personales -->
+      <div data-include="sections/proyectos-personales.html"></div>
 
-    <!-- Experiencias -->
-    <div data-include="sections/experiencias.html"></div>
+      <!-- Experiencias -->
+      <div data-include="sections/experiencias.html"></div>
 
-    <!-- Contacto -->
-    <div data-include="sections/contacto.html"></div>
+      <!-- Contacto -->
+      <div data-include="sections/contacto.html"></div>
 
       <!-- Footer -->
       <div data-include="sections/footer.html"></div>
     </main>
 
     <!-- Critical Scripts - Load immediately -->
+    <script src="js/universal-platform.js"></script>
     <script src="js/performance-optimizer.js"></script>
     <script src="js/contact-protection.js"></script>
     <script src="js/ux-enhancements.js"></script>
     <script src="js/tooltips-system.js"></script>
+    <script src="js/mobile-navigation.js"></script>
+    <script src="js/mobile-cards.js"></script>
     <script src="js/include.js"></script>
 
     <!-- Non-critical Scripts - Deferred loading -->

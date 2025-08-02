@@ -1,0 +1,772 @@
+/* Universal Platform Optimization - Todas las plataformas */
+
+/* ===== VARIABLES UNIVERSALES ===== */
+:root {
+    /* Breakpoints universales */
+    --mobile-max: 767px;
+    --tablet-min: 768px;
+    --tablet-max: 1023px;
+    --desktop-min: 1024px;
+    --desktop-large: 1440px;
+    --desktop-xl: 1920px;
+    
+    /* Espaciado adaptativo */
+    --container-padding-mobile: 16px;
+    --container-padding-tablet: 24px;
+    --container-padding-desktop: 32px;
+    --container-padding-xl: 48px;
+    
+    /* Tipografía escalable */
+    --font-scale-mobile: 0.875;
+    --font-scale-tablet: 1;
+    --font-scale-desktop: 1.125;
+    --font-scale-xl: 1.25;
+    
+    /* Animaciones por plataforma */
+    --animation-duration-mobile: 0.2s;
+    --animation-duration-tablet: 0.3s;
+    --animation-duration-desktop: 0.4s;
+    
+    /* Z-index universal */
+    --z-dropdown: 1000;
+    --z-sticky: 1010;
+    --z-modal: 1020;
+    --z-popover: 1030;
+    --z-tooltip: 1040;
+    --z-notification: 1050;
+}
+
+/* ===== DETECCIÓN DE PLATAFORMA ===== */
+
+/* Mobile-first base */
+.platform-mobile { display: block; }
+.platform-tablet { display: none; }
+.platform-desktop { display: none; }
+
+/* Tablet específico */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .platform-mobile { display: none; }
+    .platform-tablet { display: block; }
+    .platform-desktop { display: none; }
+}
+
+/* Desktop y superior */
+@media (min-width: 1024px) {
+    .platform-mobile { display: none; }
+    .platform-tablet { display: none; }
+    .platform-desktop { display: block; }
+}
+
+/* ===== NAVEGACIÓN UNIVERSAL ===== */
+
+/* Base Navigation */
+.navbar-universal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    z-index: var(--z-sticky);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile Navigation (ya implementado) */
+@media (max-width: 767px) {
+    .navbar-universal {
+        padding: 0.75rem 0;
+    }
+    
+    .nav-menu-desktop {
+        display: none !important;
+    }
+}
+
+/* Tablet Navigation */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .navbar-universal {
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--container-padding-tablet);
+    }
+    
+    .nav-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    /* Tablet menu - horizontal compacto */
+    .nav-menu-desktop {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .nav-link-desktop {
+        padding: 8px 12px;
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-link-desktop:hover {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--primary-color);
+        transform: translateY(-1px);
+    }
+    
+    .nav-link-desktop.active {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--primary-color);
+    }
+    
+    /* Hide mobile menu toggle */
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Desktop Navigation */
+@media (min-width: 1024px) {
+    .navbar-universal {
+        padding: 1.25rem 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--container-padding-desktop);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .nav-brand {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-brand:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    
+    /* Desktop menu - horizontal expandido */
+    .nav-menu-desktop {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .nav-link-desktop {
+        padding: 12px 20px;
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-link-desktop::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+        transition: left 0.6s;
+    }
+    
+    .nav-link-desktop:hover::before {
+        left: 100%;
+    }
+    
+    .nav-link-desktop:hover {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    .nav-link-desktop.active {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--primary-color);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    
+    .nav-link-desktop.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 2px;
+        background: var(--primary-color);
+        border-radius: 1px;
+    }
+    
+    /* Hide mobile menu toggle */
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Desktop XL Navigation */
+@media (min-width: 1440px) {
+    .nav-container {
+        max-width: 1400px;
+        padding: 0 var(--container-padding-xl);
+    }
+    
+    .nav-brand {
+        font-size: 2rem;
+    }
+    
+    .nav-menu-desktop {
+        gap: 2.5rem;
+    }
+    
+    .nav-link-desktop {
+        padding: 14px 24px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== LAYOUT UNIVERSAL ===== */
+
+/* Container adaptativo */
+.container-universal {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+    .container-universal {
+        padding: 0 var(--container-padding-tablet);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-universal {
+        max-width: 1200px;
+        padding: 0 var(--container-padding-desktop);
+    }
+}
+
+@media (min-width: 1440px) {
+    .container-universal {
+        max-width: 1400px;
+        padding: 0 var(--container-padding-xl);
+    }
+}
+
+@media (min-width: 1920px) {
+    .container-universal {
+        max-width: 1600px;
+    }
+}
+
+/* ===== GRID UNIVERSAL ===== */
+
+.grid-universal {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Mobile: 1 columna */
+}
+
+@media (min-width: 768px) {
+    .grid-universal {
+        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columnas */
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-universal {
+        gap: 2.5rem;
+        grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columnas */
+    }
+}
+
+@media (min-width: 1440px) {
+    .grid-universal {
+        gap: 3rem;
+        grid-template-columns: repeat(4, 1fr); /* Desktop XL: 4 columnas */
+    }
+}
+
+/* Grid variaciones */
+.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid-2-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-2-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== TARJETAS UNIVERSALES ===== */
+
+.card-universal {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mobile: Touch optimized */
+@media (max-width: 767px) {
+    .card-universal {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .card-universal:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Tablet: Balanced interactions */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .card-universal {
+        padding: 1.75rem;
+        border-radius: 14px;
+    }
+    
+    .card-universal:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-color);
+    }
+}
+
+/* Desktop: Rich hover effects */
+@media (min-width: 1024px) {
+    .card-universal {
+        padding: 2rem;
+        border-radius: 16px;
+    }
+    
+    .card-universal::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .card-universal:hover::before {
+        opacity: 1;
+    }
+    
+    .card-universal:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        border-color: var(--primary-color);
+    }
+    
+    .card-universal:hover .card-title {
+        color: var(--primary-color);
+    }
+}
+
+/* ===== BOTONES UNIVERSALES ===== */
+
+.btn-universal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 44px; /* Touch target */
+}
+
+/* Mobile: Simple feedback */
+@media (max-width: 767px) {
+    .btn-universal {
+        padding: 14px 20px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    .btn-universal:active {
+        transform: scale(0.96);
+        opacity: 0.8;
+    }
+}
+
+/* Tablet: Moderate effects */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .btn-universal {
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    .btn-universal:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    }
+}
+
+/* Desktop: Rich interactions */
+@media (min-width: 1024px) {
+    .btn-universal {
+        padding: 14px 28px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+    
+    .btn-universal::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-universal:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .btn-universal:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-universal:active {
+        transform: translateY(-1px);
+    }
+}
+
+/* ===== FORMULARIOS UNIVERSALES ===== */
+
+.form-universal {
+    width: 100%;
+}
+
+.form-group-universal {
+    margin-bottom: 1.5rem;
+}
+
+.form-input-universal,
+.form-textarea-universal {
+    width: 100%;
+    padding: 16px;
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+/* Mobile: Touch optimized */
+@media (max-width: 767px) {
+    .form-input-universal,
+    .form-textarea-universal {
+        font-size: 16px; /* Prevent iOS zoom */
+        padding: 16px;
+        border-radius: 10px;
+    }
+}
+
+/* Tablet: Balanced */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .form-input-universal,
+    .form-textarea-universal {
+        padding: 14px 18px;
+        border-radius: 10px;
+    }
+}
+
+/* Desktop: Enhanced */
+@media (min-width: 1024px) {
+    .form-input-universal,
+    .form-textarea-universal {
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+    }
+    
+    .form-input-universal:hover,
+    .form-textarea-universal:hover {
+        border-color: var(--primary-light);
+        box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
+    }
+}
+
+.form-input-universal:focus,
+.form-textarea-universal:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== TIPOGRAFÍA UNIVERSAL ===== */
+
+.text-universal {
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+/* Mobile typography */
+@media (max-width: 767px) {
+    .heading-xl { font-size: 2.5rem; line-height: 1.1; }
+    .heading-lg { font-size: 2rem; line-height: 1.2; }
+    .heading-md { font-size: 1.5rem; line-height: 1.3; }
+    .heading-sm { font-size: 1.25rem; line-height: 1.4; }
+    .text-lg { font-size: 1.125rem; }
+    .text-base { font-size: 1rem; }
+    .text-sm { font-size: 0.875rem; }
+}
+
+/* Tablet typography */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .heading-xl { font-size: 3rem; line-height: 1.1; }
+    .heading-lg { font-size: 2.25rem; line-height: 1.2; }
+    .heading-md { font-size: 1.75rem; line-height: 1.3; }
+    .heading-sm { font-size: 1.375rem; line-height: 1.4; }
+    .text-lg { font-size: 1.25rem; }
+    .text-base { font-size: 1.125rem; }
+    .text-sm { font-size: 1rem; }
+}
+
+/* Desktop typography */
+@media (min-width: 1024px) {
+    .heading-xl { font-size: 3.5rem; line-height: 1.1; }
+    .heading-lg { font-size: 2.75rem; line-height: 1.2; }
+    .heading-md { font-size: 2rem; line-height: 1.3; }
+    .heading-sm { font-size: 1.5rem; line-height: 1.4; }
+    .text-lg { font-size: 1.375rem; }
+    .text-base { font-size: 1.25rem; }
+    .text-sm { font-size: 1.125rem; }
+}
+
+/* Desktop XL typography */
+@media (min-width: 1440px) {
+    .heading-xl { font-size: 4rem; line-height: 1.1; }
+    .heading-lg { font-size: 3.25rem; line-height: 1.2; }
+    .heading-md { font-size: 2.25rem; line-height: 1.3; }
+    .heading-sm { font-size: 1.75rem; line-height: 1.4; }
+    .text-lg { font-size: 1.5rem; }
+    .text-base { font-size: 1.375rem; }
+    .text-sm { font-size: 1.25rem; }
+}
+
+/* ===== ESPACIADO UNIVERSAL ===== */
+
+/* Mobile spacing */
+.section-universal {
+    padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+    .section-universal {
+        padding: 4rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-universal {
+        padding: 5rem 0;
+    }
+}
+
+@media (min-width: 1440px) {
+    .section-universal {
+        padding: 6rem 0;
+    }
+}
+
+/* ===== ANIMACIONES UNIVERSALES ===== */
+
+/* Mobile: Simples y rápidas */
+@media (max-width: 767px) {
+    .animate-universal {
+        transition: all var(--animation-duration-mobile) ease;
+    }
+}
+
+/* Tablet: Moderadas */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .animate-universal {
+        transition: all var(--animation-duration-tablet) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Desktop: Elaboradas */
+@media (min-width: 1024px) {
+    .animate-universal {
+        transition: all var(--animation-duration-desktop) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animate-hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .animate-hover-glow:hover {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    
+    .animate-hover-scale:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== UTILIDADES UNIVERSALES ===== */
+
+/* Visibilidad por plataforma */
+.hide-mobile-only { display: block; }
+.show-mobile-only { display: none; }
+
+@media (max-width: 767px) {
+    .hide-mobile-only { display: none !important; }
+    .show-mobile-only { display: block !important; }
+}
+
+.hide-tablet-only { display: block; }
+.show-tablet-only { display: none; }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hide-tablet-only { display: none !important; }
+    .show-tablet-only { display: block !important; }
+}
+
+.hide-desktop-only { display: block; }
+.show-desktop-only { display: none; }
+
+@media (min-width: 1024px) {
+    .hide-desktop-only { display: none !important; }
+    .show-desktop-only { display: block !important; }
+}
+
+/* ===== SOPORTE PARA DISPOSITIVOS HÍBRIDOS ===== */
+
+/* Dispositivos con touch y mouse */
+@media (hover: hover) and (pointer: fine) {
+    /* Desktop con mouse preciso */
+    .hybrid-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    /* Dispositivos solo touch */
+    .hybrid-hover:active {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+}
+
+@media (hover: hover) and (pointer: coarse) {
+    /* Tablets con mouse (hybrid) */
+    .hybrid-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* ===== SOPORTE PARA ALTAS RESOLUCIONES ===== */
+
+@media (min-resolution: 2dppx) {
+    /* Pantallas de alta densidad */
+    .card-universal {
+        border-width: 0.5px;
+    }
+    
+    .btn-universal {
+        border-width: 0.5px;
+    }
+}
+
+/* ===== MODO OSCURO UNIVERSAL ===== */
+
+@media (prefers-color-scheme: dark) {
+    /* Ya está implementado en el tema base */
+}
+
+/* ===== REDUCCIÓN DE MOVIMIENTO ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-universal,
+    .card-universal,
+    .btn-universal,
+    .nav-link-desktop {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ===== ALTO CONTRASTE ===== */
+
+@media (prefers-contrast: high) {
+    .card-universal,
+    .btn-universal,
+    .form-input-universal {
+        border-width: 2px;
+        border-color: var(--text-dark);
+    }
+    
+    .btn-universal {
+        background: var(--text-dark);
+        color: var(--bg-white);
+    }
+}
