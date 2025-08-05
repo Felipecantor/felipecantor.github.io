@@ -209,11 +209,14 @@
     animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
-.hero-image {
+.hero-visual {
     position: relative;
-    width: 400px;
-    height: 400px;
-    animation: imageFloat 6s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+    width: 100%;
+    height: 500px; /* Altura mínima para contener las cards */
 }
 
 .image-gallery {
@@ -310,8 +313,9 @@
     animation: float 3s ease-in-out infinite;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 20; /* ✅ Z-index más alto */
     min-width: 120px;
+    white-space: nowrap; /* Evita que el texto se rompa */
 }
 
 .floating-card:hover {
@@ -323,6 +327,7 @@
 .card-icon {
     font-size: 1.2rem;
     animation: iconSpin 3s linear infinite;
+    color: var(--primary-color);
 }
 
 .card-text {
@@ -331,23 +336,90 @@
     text-shadow: none;
 }
 
-/* Posiciones específicas para las floating cards */
+/* 3. Posiciones corregidas - DENTRO del viewport */
 .card-1 {
     top: 10%;
-    left: -20%;
+    left: 10%; /* ✅ CORREGIDO: Visible en pantalla */
     animation-delay: 0s;
 }
 
 .card-2 {
     top: 60%;
-    right: -15%;
+    right: 10%; /* ✅ CORREGIDO: Visible en pantalla */
     animation-delay: 1s;
 }
 
 .card-3 {
-    bottom: 20%;
-    left: -10%;
+    bottom: 15%;
+    left: 15%; /* ✅ CORREGIDO: Visible en pantalla */
     animation-delay: 2s;
+}
+
+/* 4. Animaciones mejoradas */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 5. Responsive mejorado */
+@media (max-width: 1024px) {
+    .floating-card {
+        display: flex; /* ✅ Mostrar en tablets */
+        font-size: 0.8rem;
+        padding: 0.75rem 1rem;
+    }
+    
+    .card-1 {
+        top: 5%;
+        left: 5%;
+    }
+    
+    .card-2 {
+        top: 65%;
+        right: 5%;
+    }
+    
+    .card-3 {
+        bottom: 10%;
+        left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-card {
+        display: none; /* Solo ocultar en móviles pequeños */
+    }
+}
+
+/* 6. Asegurar que el contenedor padre tenga overflow visible */
+.hero {
+    overflow: visible; /* ✅ Cambiar de hidden a visible */
+}
+
+/* 7. Cards específicas con contenido (ejemplo) */
+.card-1 .card-text::after {
+    content: "🚀 Desarrollo";
+}
+
+.card-2 .card-text::after {
+    content: "💡 Innovación";
+}
+
+.card-3 .card-text::after {
+    content: "⭐ Calidad";
 }
 
 /* Hero Scroll Indicator */
@@ -626,8 +698,4 @@
         padding: 0.75rem 1.25rem;
         font-size: var(--font-size-sm);
     }
-<<<<<<< Current (Your changes)
-} 
-=======
->>>>>>> Incoming (Background Agent changes)
-} 
+}
