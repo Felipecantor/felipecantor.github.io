@@ -37,23 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Scroll effect mejorado
+    // Scroll effect básico - solo para compatibilidad
+    // El sistema avanzado está en navbar-scroll-animation.js
     function handleScroll() {
         const scrollY = window.scrollY;
-        console.log('Scroll Y:', scrollY);
         
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
-            console.log('Agregando clase scrolled');
+        // Solo aplicar clase básica scrolled si no hay sistema avanzado
+        if (!window.navbarScrollAnimation) {
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+                console.log('Sistema básico: Agregando clase scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+                console.log('Sistema básico: Removiendo clase scrolled');
+            }
         } else {
-            navbar.classList.remove('scrolled');
-            console.log('Removiendo clase scrolled');
+            console.log('Sistema avanzado detectado - usando navbar-scroll-animation.js');
         }
     }
 
     // Ejecutar inmediatamente y en scroll
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Smooth scroll para enlaces internos
     navLinks.forEach(link => {

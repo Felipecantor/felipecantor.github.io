@@ -148,41 +148,33 @@ class HeroAnimations {
         this.stopAutoPlay();
         this.isInitialized = false;
     }
-<<<<<<< Current (Your changes)
-    
-    // Inicializar todo
-    addDynamicStyles();
-    init();
-    
-    // API pública para controlar animaciones
-    window.HeroAnimations = {
-        play: () => {
-            document.querySelectorAll('.hero *').forEach(el => {
-                if (el.style.animationPlayState) {
-                    el.style.animationPlayState = 'running';
-                }
-            });
-        },
-        pause: () => {
-            document.querySelectorAll('.hero *').forEach(el => {
-                if (el.style.animationPlayState) {
-                    el.style.animationPlayState = 'paused';
-                }
-            });
-        },
-        restart: () => {
-            document.querySelectorAll('.hero *').forEach(el => {
-                if (el.style.animation) {
-                    el.style.animation = 'none';
-                    el.offsetHeight; // Trigger reflow
-                    el.style.animation = null;
-                }
-            });
-        }
-    };
-    
-})(); 
-=======
+
+    // Public API methods for controlling animations
+    play() {
+        document.querySelectorAll('.hero *').forEach(el => {
+            if (el.style.animationPlayState) {
+                el.style.animationPlayState = 'running';
+            }
+        });
+    }
+
+    pause() {
+        document.querySelectorAll('.hero *').forEach(el => {
+            if (el.style.animationPlayState) {
+                el.style.animationPlayState = 'paused';
+            }
+        });
+    }
+
+    restart() {
+        document.querySelectorAll('.hero *').forEach(el => {
+            if (el.style.animation) {
+                el.style.animation = 'none';
+                el.offsetHeight; // Trigger reflow
+                el.style.animation = null;
+            }
+        });
+    }
 }
 
 // Initialize Hero Animations
@@ -190,5 +182,4 @@ const heroAnimations = new HeroAnimations();
 
 // Export for global access
 window.HeroAnimations = HeroAnimations;
-window.heroAnimations = heroAnimations; 
->>>>>>> Incoming (Background Agent changes)
+window.heroAnimations = heroAnimations;

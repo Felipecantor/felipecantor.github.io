@@ -264,21 +264,167 @@
 }
 
 /* ===== SCROLL EFFECTS ===== */
-.navbar.scrolled {
+
+/* Estado compacto (fuera del hero) */
+.navbar.scrolled,
+.navbar.navbar-scrolled {
     background: rgba(15, 23, 42, 0.98) !important; /* Mantener tema oscuro */
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4) !important;
     border-bottom: 1px solid rgba(71, 85, 105, 0.3) !important;
+    padding: 0.5rem 0 !important;
 }
 
-.navbar.scrolled .navbar-content {
+.navbar.scrolled .navbar-content,
+.navbar.navbar-scrolled .navbar-content {
     height: 60px !important; /* Altura reducida */
     padding: var(--spacing-xs) 0 !important;
 }
 
-.navbar.scrolled .nav-link {
+.navbar.scrolled .nav-link,
+.navbar.navbar-scrolled .nav-link {
     color: var(--text-dark) !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    font-size: var(--font-size-xs) !important;
 }
 
-.navbar.scrolled .navbar-logo {
+.navbar.scrolled .navbar-logo,
+.navbar.navbar-scrolled .navbar-logo {
     color: var(--text-dark) !important;
+    font-size: var(--font-size-xl) !important;
+}
+
+.navbar.scrolled .navbar-nav,
+.navbar.navbar-scrolled .navbar-nav {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    gap: var(--spacing-md) !important;
+}
+
+.navbar.scrolled .navbar-cv-btn,
+.navbar.navbar-scrolled .navbar-cv-btn {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    font-size: var(--font-size-xs) !important;
+}
+
+/* Estado ultra-minimal para scroll activo */
+.navbar.navbar-minimal {
+    background: rgba(15, 23, 42, 0.95) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2) !important;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.15) !important;
+    padding: 0.25rem 0 !important;
+    transform: translateY(0) !important;
+}
+
+.navbar.navbar-minimal .navbar-content {
+    height: 45px !important; /* Altura ultra-reducida */
+    padding: 0.25rem 0 !important;
+}
+
+.navbar.navbar-minimal .navbar-logo {
+    font-size: 1.1rem !important;
+    padding: 0.25rem 0.5rem !important;
+}
+
+.navbar.navbar-minimal .navbar-nav {
+    padding: 0.25rem 0.5rem !important;
+    gap: 0.75rem !important;
+    background: rgba(30, 41, 59, 0.6) !important;
+    border-radius: 1.5rem !important;
+}
+
+.navbar.navbar-minimal .nav-link {
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.8rem !important;
+    border-radius: 1rem !important;
+}
+
+.navbar.navbar-minimal .navbar-cv-btn {
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    border-radius: 1rem !important;
+}
+
+.navbar.navbar-minimal .navbar-cv-btn svg {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* Estado oculto para scroll hacia abajo */
+.navbar.navbar-hidden {
+    transform: translateY(-100%) !important;
+    opacity: 0.8 !important;
+}
+
+/* Estado visible forzado al hacer hover en la parte superior */
+.navbar.navbar-peek {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    animation: peekReveal 0.3s ease-out !important;
+}
+
+/* Estado durante scroll activo */
+.navbar.navbar-scrolling {
+    transition-duration: 0.2s !important; /* Transiciones más rápidas durante scroll */
+}
+
+.navbar.navbar-scrolling.navbar-minimal {
+    backdrop-filter: blur(15px) !important;
+}
+
+/* Animaciones específicas */
+@keyframes peekReveal {
+    from {
+        transform: translateY(-50%);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0.8;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Efecto de compresión progresiva */
+.navbar.navbar-minimal .navbar-nav {
+    transform: scale(0.95) !important;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.navbar.navbar-minimal:hover .navbar-nav {
+    transform: scale(1) !important;
+}
+
+/* Indicador visual de estado minimal */
+.navbar.navbar-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
 } 
