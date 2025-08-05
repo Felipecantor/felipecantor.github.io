@@ -37,23 +37,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Scroll effect mejorado
+    // Scroll effect mejorado - detecta cuando estamos fuera de la sección hero
     function handleScroll() {
         const scrollY = window.scrollY;
-        console.log('Scroll Y:', scrollY);
+        const heroSection = document.querySelector('#home, .hero');
         
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
-            console.log('Agregando clase scrolled');
+        if (heroSection) {
+            const heroRect = heroSection.getBoundingClientRect();
+            const isInHero = heroRect.bottom > 100; // Considerar que estamos en hero si está 100px visible
+            
+            if (!isInHero) {
+                navbar.classList.add('scrolled');
+                navbar.classList.add('navbar-scrolled');
+                console.log('Fuera del hero - navbar pequeña');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.remove('navbar-scrolled');
+                console.log('En hero - navbar normal');
+            }
         } else {
-            navbar.classList.remove('scrolled');
-            console.log('Removiendo clase scrolled');
+            // Fallback: usar scroll tradicional si no hay hero
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.remove('navbar-scrolled');
+            }
         }
     }
 
     // Ejecutar inmediatamente y en scroll
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Smooth scroll para enlaces internos
     navLinks.forEach(link => {

@@ -9,7 +9,7 @@
     backdrop-filter: blur(20px) !important;
     border-bottom: 1px solid rgba(71, 85, 105, 0.2) !important;
     z-index: 1000 !important;
-    transition: all var(--transition-normal) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
     overflow: hidden !important;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
     display: block !important;
@@ -17,6 +17,7 @@
     opacity: 1 !important;
     width: 100% !important;
     height: auto !important;
+    padding: 1rem 0 !important; /* Padding inicial más grande */
 }
 
 .navbar-content {
@@ -29,7 +30,7 @@
     margin: 0 auto !important;
     padding-left: var(--spacing-lg) !important;
     padding-right: var(--spacing-lg) !important;
-    transition: all var(--transition-normal) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
 }
 
 /* Logo/Brand */
@@ -44,7 +45,7 @@
     font-weight: 700 !important;
     color: var(--text-dark) !important;
     text-decoration: none !important;
-    transition: all var(--transition-fast) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
     padding: var(--spacing-xs) var(--spacing-sm) !important;
     border-radius: var(--border-radius-md) !important;
 }
@@ -79,6 +80,7 @@
     border-radius: var(--border-radius-xl) !important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(71, 85, 105, 0.3) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
 }
 
 .nav-item {
@@ -92,7 +94,7 @@
     text-decoration: none !important;
     font-weight: 500 !important;
     font-size: var(--font-size-sm) !important;
-    transition: all var(--transition-fast) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
     border-radius: var(--border-radius-md) !important;
     position: relative !important;
     border: 1px solid transparent !important;
@@ -135,7 +137,7 @@
     font-weight: 600 !important;
     text-decoration: none !important;
     border: 1px solid var(--primary-color) !important;
-    transition: all var(--transition-fast) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Transición suave */
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
 }
 
@@ -264,21 +266,41 @@
 }
 
 /* ===== SCROLL EFFECTS ===== */
-.navbar.scrolled {
+.navbar.scrolled,
+.navbar.navbar-scrolled {
     background: rgba(15, 23, 42, 0.98) !important; /* Mantener tema oscuro */
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4) !important;
     border-bottom: 1px solid rgba(71, 85, 105, 0.3) !important;
+    padding: 0.5rem 0 !important;
 }
 
-.navbar.scrolled .navbar-content {
+.navbar.scrolled .navbar-content,
+.navbar.navbar-scrolled .navbar-content {
     height: 60px !important; /* Altura reducida */
     padding: var(--spacing-xs) 0 !important;
 }
 
-.navbar.scrolled .nav-link {
+.navbar.scrolled .nav-link,
+.navbar.navbar-scrolled .nav-link {
     color: var(--text-dark) !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    font-size: var(--font-size-xs) !important;
 }
 
-.navbar.scrolled .navbar-logo {
+.navbar.scrolled .navbar-logo,
+.navbar.navbar-scrolled .navbar-logo {
     color: var(--text-dark) !important;
+    font-size: var(--font-size-xl) !important;
+}
+
+.navbar.scrolled .navbar-nav,
+.navbar.navbar-scrolled .navbar-nav {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    gap: var(--spacing-md) !important;
+}
+
+.navbar.scrolled .navbar-cv-btn,
+.navbar.navbar-scrolled .navbar-cv-btn {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    font-size: var(--font-size-xs) !important;
 } 
