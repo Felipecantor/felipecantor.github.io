@@ -49,9 +49,13 @@ class NavbarAnimation {
             if (isInHero) {
                 // En hero: navbar normal
                 this.navbar.classList.remove('navbar-scrolled');
+                this.navbar.classList.remove('scrolled');
+                console.log('🏠 En sección hero - navbar normal');
             } else {
                 // Fuera de hero: navbar pequeña
                 this.navbar.classList.add('navbar-scrolled');
+                this.navbar.classList.add('scrolled');
+                console.log('📍 Fuera de hero - navbar pequeña');
             }
             
             lastScrollTop = scrollTop;
@@ -62,8 +66,8 @@ class NavbarAnimation {
         if (!this.heroSection) return;
 
         const options = {
-            threshold: 0.1, // Activar cuando 10% de la sección hero esté visible
-            rootMargin: '-50px 0px -50px 0px'
+            threshold: 0.2, // Activar cuando 20% de la sección hero esté visible
+            rootMargin: '-80px 0px -80px 0px' // Margen para activar la transición antes
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -71,9 +75,13 @@ class NavbarAnimation {
                 if (entry.isIntersecting) {
                     // Estamos en la sección hero
                     this.navbar.classList.remove('navbar-scrolled');
+                    this.navbar.classList.remove('scrolled');
+                    console.log('🔍 Intersection Observer: En hero - navbar normal');
                 } else {
                     // No estamos en la sección hero
                     this.navbar.classList.add('navbar-scrolled');
+                    this.navbar.classList.add('scrolled');
+                    console.log('🔍 Intersection Observer: Fuera de hero - navbar pequeña');
                 }
             });
         }, options);
@@ -87,11 +95,12 @@ class NavbarAnimation {
         const heroRect = this.heroSection.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Considerar que estamos en hero si al menos 20% está visible
+        // Considerar que estamos en hero si al menos 30% está visible o si estamos cerca del top
         const heroVisible = Math.min(heroRect.bottom, windowHeight) - Math.max(heroRect.top, 0);
         const heroHeight = heroRect.height;
+        const isNearTop = heroRect.bottom > 150; // Si el hero está al menos 150px visible desde arriba
         
-        return heroVisible > (heroHeight * 0.2);
+        return heroVisible > (heroHeight * 0.3) || isNearTop;
     }
 
     // Public API
