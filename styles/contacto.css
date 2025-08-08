@@ -44,15 +44,7 @@
     animation: shimmer 3s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.7; }
-}
-
-@keyframes shimmer {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
+/* Animaciones movidas a effects.css para evitar duplicados */
 
 .contacto-content {
     display: grid;

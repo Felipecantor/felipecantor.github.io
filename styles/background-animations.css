@@ -107,23 +107,7 @@ body::before {
     }
 }
 
-/* Animación de partículas */
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
+/* Animación de partículas - Movida a effects.css */
 
 /* Animación de brillo de sección */
 @keyframes sectionGlow {
@@ -197,21 +181,7 @@ body::before {
     }
 }
 
-/* Efecto de pulso para elementos importantes */
-.pulse-element {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.8;
-    }
-}
+/* Efecto de pulso para elementos importantes - Movido a effects.css */
 
 /* Efecto de rotación suave */
 .rotate-slow {
@@ -227,33 +197,9 @@ body::before {
     }
 }
 
-/* Efecto de flotación */
-.float-element {
-    animation: float 3s ease-in-out infinite;
-}
+/* Efecto de flotación - Movido a effects.css */
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Efecto de brillo */
-.glow-element {
-    animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-    }
-}
+/* Efecto de brillo - Movido a effects.css */
 
 /* Efecto de ondas para botones */
 .wave-button {
@@ -327,25 +273,11 @@ body::before {
 
 /* Optimización para preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-<<<<<<< Current (Your changes)
-    /* Deshabilitar animaciones para usuarios que prefieren menos movimiento */
-    .hero::before,
-    .sobre-mi::before,
-    .proyectos-u::before,
-    .proyectos-trabajo::before,
-    .proyectos-personales::before,
-    .experiencias::before,
-    .cv::before,
-    .footer::before,
-    .navbar::before {
-        animation: none;
-=======
     *,
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
->>>>>>> Incoming (Background Agent changes)
     }
 } 

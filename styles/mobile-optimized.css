@@ -17,14 +17,7 @@
         align-items: center;
     }
     
-    /* Logo/Brand Area */
-    .nav-brand {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        text-decoration: none;
-        z-index: 1001;
-    }
+    /* Logo/Brand Area - Using navbar-brand instead of nav-brand */
     
     /* Hamburger Menu Button */
     .mobile-menu-toggle {

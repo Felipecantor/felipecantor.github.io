@@ -148,10 +148,7 @@ class UniversalPlatformSystem {
     }
 
     setupUniversalNavigation() {
-        // Create universal navigation structure
-        this.createUniversalNavbar();
-        
-        // Setup platform-specific navigation
+        // Setup platform-specific navigation (navbar already exists in HTML)
         if (this.capabilities.isMobile) {
             this.setupMobileNavigation();
         } else if (this.capabilities.isTablet) {
@@ -161,70 +158,7 @@ class UniversalPlatformSystem {
         }
     }
 
-    createUniversalNavbar() {
-        let navbar = document.querySelector('.navbar');
-        if (!navbar) {
-            navbar = document.createElement('nav');
-            navbar.className = 'navbar navbar-universal';
-            document.body.insertBefore(navbar, document.body.firstChild);
-        } else {
-            navbar.classList.add('navbar-universal');
-        }
-
-        let container = navbar.querySelector('.nav-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'nav-container';
-            navbar.appendChild(container);
-        }
-
-        // Create brand
-        let brand = container.querySelector('.nav-brand');
-        if (!brand) {
-            brand = document.createElement('a');
-            brand.className = 'nav-brand';
-            brand.href = '#';
-            brand.textContent = 'Anderson Cantor';
-            container.appendChild(brand);
-        }
-
-        // Create desktop menu
-        this.createDesktopMenu(container);
-    }
-
-    createDesktopMenu(container) {
-        let desktopMenu = container.querySelector('.nav-menu-desktop');
-        if (!desktopMenu) {
-            desktopMenu = document.createElement('div');
-            desktopMenu.className = 'nav-menu-desktop';
-            container.appendChild(desktopMenu);
-        }
-
-        const menuItems = [
-            { href: '#hero', text: 'Inicio' },
-            { href: '#sobre-mi', text: 'Sobre Mí' },
-            { href: '#academica', text: 'Formación' },
-            { href: '#proyectos-u', text: 'Proyectos U' },
-            { href: '#proyectos-trabajo', text: 'Trabajo' },
-            { href: '#proyectos-personales', text: 'Personales' },
-            { href: '#experiencias', text: 'Experiencia' },
-            { href: '#contacto', text: 'Contacto' }
-        ];
-
-        desktopMenu.innerHTML = '';
-        menuItems.forEach(item => {
-            const link = document.createElement('a');
-            link.className = 'nav-link-desktop';
-            link.href = item.href;
-            link.textContent = item.text;
-            link.setAttribute('data-section', item.href.substring(1));
-            
-            desktopMenu.appendChild(link);
-        });
-
-        // Setup desktop navigation listeners
-        this.setupDesktopNavigationListeners(desktopMenu);
-    }
+    // Removed createUniversalNavbar and createDesktopMenu methods to prevent duplicate navbar creation
 
     setupMobileNavigation() {
         // Mobile navigation handled by existing mobile system
@@ -248,21 +182,7 @@ class UniversalPlatformSystem {
         this.setupDesktopScrollEffects();
     }
 
-    setupDesktopNavigationListeners(menu) {
-        const links = menu.querySelectorAll('.nav-link-desktop');
-        
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                this.smoothScrollTo(targetId);
-                this.updateActiveNavigation(targetId);
-            });
-        });
-
-        // Setup scroll spy for desktop
-        this.setupScrollSpy(links);
-    }
+    // Removed setupDesktopNavigationListeners method as it referenced dynamically created elements
 
     setupScrollSpy(links) {
         const sections = document.querySelectorAll('section[id], div[id]');
@@ -287,9 +207,9 @@ class UniversalPlatformSystem {
     }
 
     updateActiveNavigation(activeHref) {
-        // Update desktop navigation
-        const desktopLinks = document.querySelectorAll('.nav-link-desktop');
-        desktopLinks.forEach(link => {
+        // Update navigation links (using existing navbar structure)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === activeHref) {
                 link.classList.add('active');
@@ -305,7 +225,7 @@ class UniversalPlatformSystem {
     smoothScrollTo(targetId) {
         const target = document.querySelector(targetId);
         if (target) {
-            const navbarHeight = document.querySelector('.navbar-universal').offsetHeight;
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
             const targetPosition = target.offsetTop - navbarHeight - 20;
             
             window.scrollTo({

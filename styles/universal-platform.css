@@ -96,12 +96,7 @@
         padding: 0 var(--container-padding-tablet);
     }
     
-    .nav-brand {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        text-decoration: none;
-    }
+    /* Removed nav-brand to avoid conflicts with navbar-brand */
     
     /* Tablet menu - horizontal compacto */
     .nav-menu-desktop {
@@ -153,18 +148,7 @@
         margin: 0 auto;
     }
     
-    .nav-brand {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-brand:hover {
-        transform: scale(1.05);
-        text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-    }
+    /* Removed nav-brand to avoid conflicts with navbar-brand */
     
     /* Desktop menu - horizontal expandido */
     .nav-menu-desktop {
@@ -238,9 +222,7 @@
         padding: 0 var(--container-padding-xl);
     }
     
-    .nav-brand {
-        font-size: 2rem;
-    }
+    /* Removed nav-brand to avoid conflicts with navbar-brand */
     
     .nav-menu-desktop {
         gap: 2.5rem;
