@@ -522,7 +522,7 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus {
 /* Efectos de texto */
 .section-title {
     position: relative;
-    background: linear-gradient(135deg, var(--text-dark), var(--text-light));
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

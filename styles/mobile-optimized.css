@@ -355,15 +355,18 @@
     /* Form improvements */
     .contact-form {
         width: 100%;
+        box-sizing: border-box;
     }
     
     .form-row {
         flex-direction: column;
         gap: 0;
+        width: 100%;
     }
     
     .form-group {
         margin-bottom: 1.5rem;
+        width: 100%;
     }
     
     .form-input,
@@ -377,6 +380,7 @@
         color: var(--text-dark);
         min-height: 44px;
         transition: all 0.3s ease;
+        box-sizing: border-box;
     }
     
     .form-input:focus,
