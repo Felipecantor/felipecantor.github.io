@@ -60,6 +60,30 @@
     font-weight: 600 !important;
 }
 
+/* Image logo styling */
+.logo-image {
+    display: block !important;
+    height: 28px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* Adjust sizes on scroll states to match previous text scaling */
+.navbar.navbar-scrolled .logo-image,
+.navbar.scrolled .logo-image {
+    height: 22px !important;
+}
+
+.navbar.navbar-minimal .logo-image {
+    height: 18px !important;
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        height: 22px !important;
+    }
+}
+
 .logo-accent {
     color: var(--primary-color) !important;
     margin-left: 2px !important;
