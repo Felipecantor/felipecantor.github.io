@@ -5,7 +5,7 @@
  * Función para cerrar manualmente el alert
  * Se ejecuta cuando el usuario hace clic en la X
  */
-function closeWelcomeAlert() {
+const closeWelcomeAlert = window.closeWelcomeAlert || function() {
     // Obtener referencia al elemento del alert
     const alert = document.getElementById('welcomeAlert');
     // Obtener referencia al body para ajustar padding
@@ -26,13 +26,14 @@ function closeWelcomeAlert() {
         // Opcional: Marcar como cerrado en sessionStorage
         sessionStorage.setItem('welcomeAlertClosed', 'true');
     }
-}
+};
+window.closeWelcomeAlert = closeWelcomeAlert;
 
 /**
  * Función para auto-cerrar el alert después de 5.5 segundos
  * Solo se ejecuta si el usuario no lo ha cerrado manualmente
  */
-function autoCloseAlert() {
+const autoCloseAlert = window.autoCloseAlert || function() {
     setTimeout(() => {
         // Verificar que el alert aún existe y no está en proceso de cierre
         const alert = document.getElementById('welcomeAlert');
@@ -40,34 +41,37 @@ function autoCloseAlert() {
             closeWelcomeAlert(); // Usar la misma función de cierre manual
         }
     }, 5500); // 5.5 segundos = 5500 milisegundos
-}
+};
+window.autoCloseAlert = autoCloseAlert;
 
 /**
  * Función para verificar si el alert debe mostrarse
  * Revisa si ya fue cerrado en esta sesión
  */
-function shouldShowAlert() {
+const shouldShowAlert = window.shouldShowAlert || function() {
     // Retorna true para que siempre se muestre al recargar la página
     // Comentado: return !sessionStorage.getItem('welcomeAlertClosed');
     return true;
-}
+};
+window.shouldShowAlert = shouldShowAlert;
 
 /**
  * Función para manejar el cierre con teclado
  * Permite cerrar con la tecla Escape
  */
-function handleKeyboardClose(event) {
+const handleKeyboardClose = window.handleKeyboardClose || function(event) {
     // Verificar si se presionó la tecla Escape (código 27)
     if (event.key === 'Escape' || event.keyCode === 27) {
         closeWelcomeAlert();
     }
-}
+};
+window.handleKeyboardClose = handleKeyboardClose;
 
 /**
  * Función de inicialización principal
  * Se ejecuta cuando el DOM está completamente cargado
  */
-function initWelcomeAlert() {
+const initWelcomeAlert = window.initWelcomeAlert || function() {
     // Obtener referencias a elementos necesarios
     const body = document.body;
     const alert = document.getElementById('welcomeAlert');
@@ -89,8 +93,11 @@ function initWelcomeAlert() {
         // Iniciar el temporizador de auto-cierre
         autoCloseAlert();
         
-        // Agregar event listener para cerrar con teclado
-        document.addEventListener('keydown', handleKeyboardClose);
+        // Agregar event listener para cerrar con teclado (una sola vez)
+        if (!window.__welcomeAlertKeydownBound) {
+            document.addEventListener('keydown', handleKeyboardClose);
+            window.__welcomeAlertKeydownBound = true;
+        }
         
         // Opcional: Agregar funcionalidad de click fuera del alert para cerrar
         // (Descomenta si quieres esta funcionalidad)
@@ -103,32 +110,37 @@ function initWelcomeAlert() {
         });
         */
     }
-}
+};
+window.initWelcomeAlert = initWelcomeAlert;
 
 /**
  * Event listener para inicializar cuando el DOM esté listo
  * Garantiza que todos los elementos HTML estén disponibles
  */
-document.addEventListener('DOMContentLoaded', initWelcomeAlert);
+if (!window.__welcomeAlertDomListenerRegistered) {
+    document.addEventListener('DOMContentLoaded', initWelcomeAlert);
+    window.__welcomeAlertDomListenerRegistered = true;
+}
 
 /**
  * Función adicional para mostrar el alert programáticamente
  * Útil si quieres mostrar el alert desde otro script
  */
-function showWelcomeAlert() {
+const showWelcomeAlert = window.showWelcomeAlert || function() {
     // Limpiar el estado de sessionStorage
     sessionStorage.removeItem('welcomeAlertClosed');
     
     // Recargar la página para mostrar el alert nuevamente
     // O alternativamente, recrear el elemento dinámicamente
     location.reload();
-}
+};
+window.showWelcomeAlert = showWelcomeAlert;
 
 /**
  * Función para personalizar el mensaje del alert
  * Permite cambiar el contenido dinámicamente
  */
-function updateAlertMessage(title, message) {
+const updateAlertMessage = window.updateAlertMessage || function(title, message) {
     const alertTitle = document.querySelector('.alert-title');
     const alertMessage = document.querySelector('.alert-message');
     
@@ -140,7 +152,8 @@ function updateAlertMessage(title, message) {
     if (alertMessage && message) {
         alertMessage.textContent = message;
     }
-}
+};
+window.updateAlertMessage = updateAlertMessage;
 
 // ===== CONFIGURACIÓN AVANZADA (OPCIONAL) =====
 
@@ -173,7 +186,7 @@ const ALERT_CONFIGS = {
  * Función para mostrar diferentes tipos de alerts
  * @param {string} type - Tipo de alert (welcome, update, maintenance)
  */
-function showAlert(type = 'welcome') {
+const showAlert = window.showAlert || function(type = 'welcome') {
     const config = ALERT_CONFIGS[type];
     if (!config) return;
     
@@ -206,4 +219,5 @@ function showAlert(type = 'welcome') {
             closeWelcomeAlert();
         }
     }, config.duration);
-}
+};
+window.showAlert = showAlert;

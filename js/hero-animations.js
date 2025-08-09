@@ -3,6 +3,11 @@
  * Restaura todas las animaciones del hero: carrusel, fondo, floating cards
  */
 
+// Idempotency guard for multiple script loads
+if (!window.__heroAnimationsLoaded) {
+  window.__heroAnimationsLoaded = true;
+}
+
 class HeroAnimations {
     constructor() {
         this.currentSlide = 0;
@@ -20,9 +25,17 @@ class HeroAnimations {
         } else {
             this.setup();
         }
+
+        // Reinitialize when dynamic sections load
+        document.addEventListener('sectionsLoaded', () => {
+            this.refresh();
+        });
     }
 
     setup() {
+        // Prevent duplicate setup
+        this.stopAutoPlay();
+
         this.setupImageGallery();
         this.setupFloatingCards();
         this.setupBackgroundAnimations();
@@ -39,6 +52,14 @@ class HeroAnimations {
         
         if (this.slides.length === 0) return;
 
+        // Clean previous indicator listeners by cloning nodes
+        this.indicators.forEach((indicator, index) => {
+            const clone = indicator.cloneNode(true);
+            indicator.parentNode.replaceChild(clone, indicator);
+        });
+        // Requery indicators after cloning
+        this.indicators = document.querySelectorAll('.indicator');
+
         // Setup indicators click events
         this.indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
@@ -52,8 +73,12 @@ class HeroAnimations {
         // Pause on hover
         const gallery = document.querySelector('.image-gallery');
         if (gallery) {
-            gallery.addEventListener('mouseenter', () => this.stopAutoPlay());
-            gallery.addEventListener('mouseleave', () => this.startAutoPlay());
+            // Remove previous handlers by cloning
+            const clone = gallery.cloneNode(true);
+            gallery.parentNode.replaceChild(clone, gallery);
+            // Re-set listeners on new node
+            clone.addEventListener('mouseenter', () => this.stopAutoPlay());
+            clone.addEventListener('mouseleave', () => this.startAutoPlay());
         }
     }
 
