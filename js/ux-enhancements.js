@@ -855,6 +855,17 @@ class UXEnhancementSystem {
         
         return notification;
     }
+
+    // Add missing method to prevent runtime error
+    setupVisualHierarchy() {
+        // Future: implement visual hierarchy tweaks
+        // No-op to satisfy calls
+        return;
+    }
+
+    setupInteractiveElements() {
+        // ... existing code ...
+    }
 }
 
 // Initialize UX Enhancement System

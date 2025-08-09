@@ -32,6 +32,8 @@ class NavbarScrollAnimation {
         } else {
             this.setup();
         }
+
+        document.addEventListener('sectionsLoaded', () => this.setup());
     }
 
     setup() {
@@ -43,9 +45,12 @@ class NavbarScrollAnimation {
             return;
         }
 
-        this.setupScrollListener();
-        this.setupMouseListener();
-        this.setupTouchListener();
+        if (!this._listenersAttached) {
+            this.setupScrollListener();
+            this.setupMouseListener();
+            this.setupTouchListener();
+            this._listenersAttached = true;
+        }
         
         console.log('🎬 Advanced Navbar Scroll Animation initialized');
     }

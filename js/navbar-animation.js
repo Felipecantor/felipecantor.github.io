@@ -18,6 +18,9 @@ class NavbarAnimation {
         } else {
             this.setup();
         }
+
+        // Re-setup after dynamic sections load
+        document.addEventListener('sectionsLoaded', () => this.refresh());
     }
 
     setup() {
@@ -29,8 +32,12 @@ class NavbarAnimation {
             return;
         }
 
-        this.setupScrollListener();
-        this.setupIntersectionObserver();
+        // Avoid re-adding listeners many times
+        if (!this._listenersAttached) {
+            this.setupScrollListener();
+            this.setupIntersectionObserver();
+            this._listenersAttached = true;
+        }
         
         this.isInitialized = true;
         console.log('🎯 Navbar Animation System initialized');

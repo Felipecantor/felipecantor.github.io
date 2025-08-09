@@ -383,6 +383,10 @@ class UniversalPlatformSystem {
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar-universal');
         
+        if (!navbar) {
+            return;
+        }
+        
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             

@@ -122,6 +122,11 @@ class PerformanceOptimizer {
         const includeUrl = element.dataset.include;
         if (!includeUrl) return;
 
+        // If a SectionLoader is present, let it handle dynamic sections to avoid duplication
+        if (window.sectionLoader) {
+            return;
+        }
+
         // Check cache first
         if (this.resourceCache.has(includeUrl)) {
             element.innerHTML = this.resourceCache.get(includeUrl);
@@ -226,10 +231,11 @@ class PerformanceOptimizer {
     }
 
     preloadCriticalResources() {
+        // Disabled to avoid 404s and CORS warnings. Manage critical resources via HTML.
         const criticalResources = [
-            { href: 'styles/optimized.css', as: 'style' },
-            { href: 'js/include.js', as: 'script' },
-            { href: 'sections/hero.html', as: 'fetch', crossorigin: 'anonymous' }
+            // { href: 'styles/optimized.css', as: 'style' },
+            // { href: 'js/include.js', as: 'script' },
+            // { href: 'sections/hero.html', as: 'fetch', crossorigin: 'anonymous' }
         ];
 
         criticalResources.forEach(resource => {
@@ -244,11 +250,14 @@ class PerformanceOptimizer {
         // Optimize Google Fonts loading
         const fontLink = document.querySelector('link[href*="fonts.googleapis.com"]');
         if (fontLink) {
-            fontLink.rel = 'preload';
-            fontLink.as = 'style';
-            fontLink.onload = () => {
-                fontLink.rel = 'stylesheet';
-            };
+            // Avoid setting invalid preload if already stylesheet
+            if (fontLink.rel !== 'stylesheet') {
+                fontLink.rel = 'preload';
+                fontLink.as = 'style';
+                fontLink.onload = () => {
+                    fontLink.rel = 'stylesheet';
+                };
+            }
         }
 
         // Add font-display: swap to CSS
