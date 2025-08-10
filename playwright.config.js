@@ -17,6 +17,7 @@ module.exports = defineConfig({
     url: 'http://127.0.0.1:8080',
     reuseExistingServer: true,
   },
+  testMatch: '**/*.e2e.spec.js',
   projects: [
     { name: 'Chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'Firefox', use: { ...devices['Desktop Firefox'] } },

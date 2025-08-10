@@ -12,7 +12,9 @@ test('main page responds with status 200', async ({ request }) => {
 test('header and footer exist', async ({ page }) => {
   await page.goto(HOME_URL);
   await expect(page.locator('nav.navbar')).toBeVisible();
-  await expect(page.locator('footer, [data-include="sections/footer.html"], .footer')).toHaveCount(1, { timeout: 5000 });
+  // Esperar a que el footer real se cargue o al menos el contenedor esté presente
+  const footer = page.locator('footer .footer, footer.footer, .footer');
+  await expect(footer.first()).toBeVisible();
 });
 
 // 3) Menu links navigate via hash
@@ -35,7 +37,8 @@ test('hero animations and gallery render', async ({ page }) => {
   await expect(page.locator('.hero, #home')).toBeVisible();
   // image gallery indicators/cards appear after dynamic includes
   await page.waitForTimeout(1000);
-  await expect(page.locator('.image-container')).toHaveCountGreaterThan(0);
+  const imageCount = await page.locator('.image-container').count();
+  expect(imageCount).toBeGreaterThan(0);
 });
 
 // 5) Measure load time and log
