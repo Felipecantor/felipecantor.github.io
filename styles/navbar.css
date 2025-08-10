@@ -24,7 +24,7 @@
     align-items: center !important;
     justify-content: space-between !important;
     padding: var(--spacing-xs) 0 !important;
-    height: 60px !important; /* Altura más pequeña */
+    height: 65px !important; /* Altura más pequeña */
     max-width: 1400px !important;
     margin: 0 auto !important;
     padding-left: var(--spacing-lg) !important;
@@ -63,7 +63,7 @@
 /* Image logo styling */
 .logo-image {
     display: block !important;
-    height: 28px !important;
+    height: 65px !important;
     width: auto !important;
     object-fit: contain !important;
 }
@@ -446,4 +446,4 @@
     border-radius: 1px;
     opacity: 0.6;
     transition: all 0.3s ease;
-} 
+}

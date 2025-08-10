@@ -37,22 +37,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Scroll effect básico - solo para compatibilidad
-    // El sistema avanzado está en navbar-scroll-animation.js
+    // Scroll effect básico
     function handleScroll() {
         const scrollY = window.scrollY;
         
-        // Solo aplicar clase básica scrolled si no hay sistema avanzado
-        if (!window.navbarScrollAnimation) {
-            if (scrollY > 50) {
-                navbar.classList.add('scrolled');
-                console.log('Sistema básico: Agregando clase scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-                console.log('Sistema básico: Removiendo clase scrolled');
-            }
+        if (scrollY > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            console.log('Sistema avanzado detectado - usando navbar-scroll-animation.js');
+            navbar.classList.remove('scrolled');
         }
     }
 
@@ -88,14 +80,4 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.style.visibility = 'visible';
         navbar.style.opacity = '1';
     });
-
-    // Verificar que el navbar esté visible cada segundo (para debugging)
-    setInterval(function() {
-        if (navbar.style.display === 'none' || navbar.style.visibility === 'hidden') {
-            console.log('Navbar se ocultó, restaurando...');
-            navbar.style.display = 'block';
-            navbar.style.visibility = 'visible';
-            navbar.style.opacity = '1';
-        }
-    }, 1000);
-}); 
+});
