@@ -4,7 +4,7 @@
   "description": "Un portafolio web moderno y modular desarrollado con HTML, CSS y JavaScript vanilla. Diseñado para mostrar proyectos, habilidades y experiencia profesional de Anderson Felipe Cantor Roa como **Junior Data Analyst**.",
   "main": "index.js",
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run tests/**/*.unit.spec.js",
     "test:e2e": "playwright test"
   },
   "repository": {
