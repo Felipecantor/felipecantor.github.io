@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Un portafolio web moderno y modular desarrollado con HTML, CSS y JavaScript vanilla. Diseñado para mostrar proyectos, habilidades y experiencia profesional de Anderson Felipe Cantor Roa como **Junior Data Analyst**.",
   "main": "index.js",
-  "scripts": {
-    "test": "vitest run tests/**/*.unit.spec.js",
-    "test:e2e": "playwright test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Felipecantor/felipecantor.github.io.git"
@@ -19,9 +15,7 @@
   },
   "homepage": "https://github.com/Felipecantor/felipecantor.github.io#readme",
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
     "http-server": "^14.1.1",
-    "jsdom": "^26.1.0",
-    "vitest": "^3.2.4"
+    "jsdom": "^26.1.0"
   }
 }
