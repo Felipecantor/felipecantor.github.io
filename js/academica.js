@@ -119,6 +119,7 @@ class AcademicaManager {
 
         // Configurar título según el certificado
         const titles = {
+            'diplomado-ia-cataluna': 'Diplomado en Arquitectura y Sistemas de Inteligencia Artificial',
             'diplomado-analitica': 'Diplomado en Analítica de Datos',
             'microsoft-analisis': 'Fundamentos Profesionales de Análisis Empresarial',
             'pl900': 'PL-900: Power Platform Fundamentals',
